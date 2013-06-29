@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{171779F1-B995-4F63-A982-0294856F57D0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>gstreamersharp</RootNamespace>
+    <AssemblyName>gstreamer-sharp</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="glib-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Private>False</Private>
+      <Package>glib-sharp-3.0</Package>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Application.cs" />
+    <Compile Include="Manager.cs" />
+    <Compile Include="Object.cs" />
+    <Compile Include="Bus.cs" />
+    <Compile Include="Element.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="Structure.cs" />
+    <Compile Include="MiniObject.cs" />
+    <Compile Include="MessageHandler.cs" />
+    <Compile Include="ElementFactory.cs" />
+    <Compile Include="GstSharp\BusFunc.cs" />
+    <Compile Include="Video\Overlay.cs" />
+    <Compile Include="BasePlugins\PlaySink.cs" />
+    <Compile Include="FakeObject.cs" />
+    <Compile Include="Allocator.cs" />
+    <Compile Include="Bin.cs" />
+    <Compile Include="Buffer.cs" />
+    <Compile Include="Memory.cs" />
+    <Compile Include="State.cs" />
+    <Compile Include="Pad.cs" />
+    <Compile Include="Caps.cs" />
+    <Compile Include="PadHandler.cs" />
+    <Compile Include="Clock.cs" />
+    <Compile Include="Audio\StreamVolume.cs" />
+    <Compile Include="ChildProxy.cs" />
+    <Compile Include="MapInfo.cs" />
+    <Compile Include="BasePlugins\PlayBin.cs" />
+    <Compile Include="Video\ColorBalance.cs" />
+    <Compile Include="Pipeline.cs" />
+    <Compile Include="CapsHandler.cs" />
+    <Compile Include="Sample.cs" />
+    <Compile Include="Query.cs" />
+    <Compile Include="TagSetter.cs" />
+    <Compile Include="Iterator.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="ElementHandler.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="GstSharp\" />
+    <Folder Include="Video\" />
+    <Folder Include="BasePlugins\" />
+    <Folder Include="Audio\" />
+  </ItemGroup>
+</Project>

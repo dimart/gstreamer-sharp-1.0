@@ -1,0 +1,19 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="test/Main.cs">
+    <Files>
+      <File FileName="test/Main.cs" Line="17" Column="42" />
+      <File FileName="gstreamer-sharp/MapInfo.cs" Line="6" Column="2" />
+      <File FileName="gstreamer-sharp/Utils.cs" Line="1" Column="1" />
+      <File FileName="gstreamer-sharp/Allocator.cs" Line="46" Column="47" />
+      <File FileName="gstreamer-sharp/Bin.cs" Line="64" Column="40" />
+      <File FileName="gstreamer-sharp/Iterator.cs" Line="38" Column="40" />
+      <File FileName="gstreamer-sharp/Element.cs" Line="1" Column="1" />
+      <File FileName="gstreamer-sharp/Object.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
