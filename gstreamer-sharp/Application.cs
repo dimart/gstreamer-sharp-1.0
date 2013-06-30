@@ -10,6 +10,7 @@ namespace Gst
 		public const string VideoDll = "gstvideo-1.0";
 		public const string GlueDll = "gstglue-1.0";
 		public const string AudioDll = "gstaudio-1.0";
+		public const string BaseDll = "gstbase-1.0";
 
 		[DllImport("gstreamer-1.0")]
 		static extern void gst_init(ref int argc,[MarshalAs(UnmanagedType.LPArray)]ref string[] argv);

@@ -1,53 +1,47 @@
 using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace Gst.Video
 {
-	public class ColorBalanceChannel : GLib.Object
+
+	public interface ColorBalance : GLib.IWrapper
 	{
-		[StructLayout(LayoutKind.Sequential)]
-		struct cbc
-		{
-			public IntPtr parent;
-			public IntPtr label;
-			public int min_value;
-			public int max_value;
-
-			IntPtr _gst_reserved;
-		}
-
-		public ColorBalanceChannel (IntPtr raw) : base(raw)
-		{
-		}
-
-		public string Label {
-			get{
-				cbc channel = (cbc)Marshal.PtrToStructure (Handle,typeof(cbc));
-				return Marshal.PtrToStringAuto (channel.label);
-			}
-		}
-
-		public int MinValue {
-			get{
-				cbc channel = (cbc)Marshal.PtrToStructure (Handle,typeof(cbc));
-				return channel.min_value;
-			}
-		}
-
-		public int MaxValue {
-			get{
-				cbc channel = (cbc)Marshal.PtrToStructure (Handle,typeof(cbc));
-				return channel.max_value;
-			}
-		}
+		GLib.List Channels{get;}
+		int this[ColorBalanceChannel channel] {get;set;}
 	}
 
-	public interface ColorBalance
+	public class ColorBalanceAdapter : GLib.IWrapper, ColorBalance
 	{
-		List<ColorBalanceChannel> Channels{get;}
-		int GetValue(ColorBalanceChannel channel);
-		void SetValue(ColorBalanceChannel channel, int val);
+		IntPtr ptr;
+
+		public ColorBalanceAdapter (IntPtr raw)
+		{
+			ptr = raw;
+		}
+
+		[DllImport(Application.VideoDll)]
+		static extern IntPtr gst_color_balance_list_channels(IntPtr cb);
+		[DllImport(Application.VideoDll)]
+		static extern int gst_color_balance_get_value(IntPtr o, IntPtr channel);
+		[DllImport(Application.VideoDll)]
+		static extern void gst_color_balance_set_value(IntPtr o, IntPtr channel, int val);
+
+		public IntPtr Handle {
+			get{return ptr;}
+		}
+
+		public GLib.List Channels {
+			get{
+				return new GLib.List(gst_color_balance_list_channels(ptr));
+			}
+		}
+
+		public int this [ColorBalanceChannel channel] {
+			get{
+			return gst_color_balance_get_value (Handle,channel.Handle);
+			}
+			set{gst_color_balance_set_value (Handle,channel.Handle,value);}
+		}
 	}
 }
 

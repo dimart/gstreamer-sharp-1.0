@@ -75,6 +75,14 @@ namespace Gst
 		static extern IntPtr gst_element_query(IntPtr element);
 		[DllImport(Application.Dll)]
 		static extern IntPtr gst_element_iterate_pads(IntPtr element);
+		[DllImport(Application.Dll)]
+		static extern bool gst_element_link(IntPtr element, IntPtr other);
+		[DllImport(Application.Dll)]
+		static extern bool gst_element_link_filtered(IntPtr element, IntPtr other, IntPtr caps);
+		[DllImport(Application.Dll)]
+		static extern void gst_element_unlink(IntPtr element, IntPtr other);
+		[DllImport(Application.Dll)]
+		static extern bool gst_element_seek_simple(IntPtr element, Format format, SeekFlags flags, long position);
 
 		public Element (IntPtr raw) : base(raw)
 		{
@@ -127,6 +135,30 @@ namespace Gst
 			return s;
 		}
 
+		public bool Link (Element element)
+		{
+			return gst_element_link (Handle,element.Handle);
+		}
+		public bool Link (Element element, Caps caps)
+		{
+			return gst_element_link_filtered (Handle,element.Handle,caps.Handle);
+		}
+		public static bool Link (params Element[] elements)
+		{
+			for(int i = 0; i < elements.Length - 1; i++)
+				if(!elements[i].Link (elements[i+1]))return false;
+			return true;
+		}
+		public void Unlink (Element element)
+		{
+			gst_element_unlink (Handle,element.Handle);
+		}
+		public static void Unlink (params Element[] elements)
+		{
+			for(int i = 0; i < elements.Length - 1; i++)
+				elements[i].Unlink (elements[i+1]);
+		}
+
 		public Gst.State State {
 			get{
 				Gst.State s;
@@ -142,6 +174,16 @@ namespace Gst
 			get{
 				return new Iterator(gst_element_iterate_pads (Handle));
 			}
+		}
+
+		public bool Seek(Format format, SeekFlags flags, long position){
+			return gst_element_seek_simple (Handle,format,flags,position);
+		}
+		public bool Seek(SeekFlags flags, long position){
+			return Seek (Format.Time,flags,position);
+		}
+		public bool Seek(long position){
+			return Seek (SeekFlags.Flush|SeekFlags.KeyUnit,position);
 		}
 
 		[GLib.Signal("pad-added")]

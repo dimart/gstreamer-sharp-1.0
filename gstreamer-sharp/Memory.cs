@@ -115,10 +115,6 @@ namespace Gst
 			}
 		}
 
-		public bool IsWritable {
-			get{return MiniObject.gst_mini_object_is_writable (mem.mini_object);}
-		}
-
 		public Memory MakeMapped (out MapInfo info, MapFlags flags)
 		{
 			MapInfo.GstMapInfo i;
@@ -130,14 +126,6 @@ namespace Gst
 			MapInfo.GstMapInfo i;
 			gst_memory_map (Handle,out i,(int)flags);
 			return new MapInfo(i);
-		}
-		public bool Lock (LockFlags flags)
-		{
-			return MiniObject.gst_mini_object_lock (mem.mini_object,(int)flags);
-		}
-		public bool Unlock (LockFlags flags)
-		{
-			return MiniObject.gst_mini_object_unlock (mem.mini_object,(int)flags);
 		}
 		public void Unmap (MapInfo info)
 		{

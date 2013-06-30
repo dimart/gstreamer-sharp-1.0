@@ -85,21 +85,16 @@ namespace Gst.BasePlugins
 			}
 		}
 
-		public List<ColorBalanceChannel> Channels {
+		public GLib.List Channels {
 			get{
-				GLib.List l = new GLib.List(gst_color_balance_list_channels (Handle));
-				List<ColorBalanceChannel> c = new List<ColorBalanceChannel>();
-				for(int i=0; i<l.Count; i++)
-					c.Add ((ColorBalanceChannel)l[i]);
-				return c;
+				return new GLib.List(gst_color_balance_list_channels (Handle));
 			}
 		}
-
-		public int GetValue(ColorBalanceChannel channel){
+		public int this [ColorBalanceChannel channel] {
+			get{
 			return gst_color_balance_get_value (Handle,channel.Handle);
-		}
-		public void SetValue(ColorBalanceChannel channel, int val){
-			gst_color_balance_set_value (Handle,channel.Handle,val);
+			}
+			set{gst_color_balance_set_value (Handle,channel.Handle,value);}
 		}
 
 		public double Volume {

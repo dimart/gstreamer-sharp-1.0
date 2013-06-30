@@ -39,7 +39,7 @@ namespace Gst
 			}
 		}
 
-		public string ToString(){
+		public override string ToString(){
 			return Marshal.PtrToStringAuto (gst_caps_to_string (Handle));
 		}
 	}

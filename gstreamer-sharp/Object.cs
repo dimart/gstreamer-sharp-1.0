@@ -64,13 +64,13 @@ namespace Gst
 
 		public object this [string name] {
 			get {
-				Value val = base.GetProperty (name);
+				GLib.Value val = base.GetProperty (name);
 				object o = val.Val;
 				val.Dispose ();
 				return o;
 			}
 			set{
-				Value val = new Value(this,name);
+				GLib.Value val = new GLib.Value(this,name);
 				val.Val = value;
 
 				base.SetProperty (name,val);

@@ -3,6 +3,17 @@ using System.Runtime.InteropServices;
 
 namespace Gst
 {
+	public enum FlowReturn
+	{
+		Ok		     =  0,
+		Linked       = -1,
+		Flushing     = -2,
+		Eos          = -3,
+		Negotiated   = -4,
+		Error	     = -5,
+		NotSupported = -6
+	}
+
 	public enum PadDirection
 	{
 		Unknown, Src, Sink

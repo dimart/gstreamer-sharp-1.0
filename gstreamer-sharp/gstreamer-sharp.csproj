@@ -73,8 +73,14 @@
     <Compile Include="Query.cs" />
     <Compile Include="TagSetter.cs" />
     <Compile Include="Iterator.cs" />
-    <Compile Include="Utils.cs" />
     <Compile Include="ElementHandler.cs" />
+    <Compile Include="Value\Value.cs" />
+    <Compile Include="Value\ValueTable.cs" />
+    <Compile Include="Utils\Utils.cs" />
+    <Compile Include="Format.cs" />
+    <Compile Include="Base\BaseSink.cs" />
+    <Compile Include="Video\ColorBalanceChannel.cs" />
+    <Compile Include="Segment.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -82,5 +88,8 @@
     <Folder Include="Video\" />
     <Folder Include="BasePlugins\" />
     <Folder Include="Audio\" />
+    <Folder Include="Value\" />
+    <Folder Include="Utils\" />
+    <Folder Include="Base\" />
   </ItemGroup>
 </Project>
