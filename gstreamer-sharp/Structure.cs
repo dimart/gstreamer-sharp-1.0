@@ -1,8 +1,11 @@
 using System;
 using System.Runtime.InteropServices;
+using GstSharp;
 
 namespace Gst
 {
+	public delegate bool StructureFunc(uint quark, ref GLib.Value val);
+
 	public class Structure : GLib.Opaque
 	{
 		[DllImport(Application.Dll)]
@@ -41,6 +44,12 @@ namespace Gst
 		                                               [MarshalAs(UnmanagedType.LPStr)] out string end);
 		[DllImport(Application.Dll)]
 		static extern int gst_structure_n_fields(IntPtr structure);
+		[DllImport(Application.Dll)]
+		static extern IntPtr gst_structure_nth_field_name(IntPtr structure, int index);
+		[DllImport(Application.Dll)]
+		static extern bool gst_structure_foreach(IntPtr structure, StructureFuncNative native, IntPtr data);
+		[DllImport(Application.Dll)]
+		static extern bool gst_structure_map_in_place(IntPtr structure, StructureFuncNative native, IntPtr data);
 
 		public Structure (IntPtr raw) : base(raw)
 		{
@@ -77,6 +86,18 @@ namespace Gst
 		public override string ToString(){
 			return Marshal.PtrToStringAuto (gst_structure_to_string (Handle));
 		}
+		public bool Foreach (StructureFunc func)
+		{
+			StructureFuncWrapper wrapper = new StructureFuncWrapper(func);
+			IntPtr data = (IntPtr)GCHandle.Alloc (wrapper);
+			return gst_structure_foreach (Handle,wrapper.native,data);
+		}
+		public bool MapInPlace (StructureFunc func)
+		{
+			StructureFuncWrapper wrapper = new StructureFuncWrapper(func);
+			IntPtr data = (IntPtr)GCHandle.Alloc (wrapper);
+			return gst_structure_map_in_place (Handle,wrapper.native,data);
+		}
 
 		public string Name {
 			get {
@@ -95,17 +116,23 @@ namespace Gst
 
 		public object this [string fieldname] {
 			get{
-				IntPtr val = gst_structure_get_value(Handle,fieldname);
-				return new GLib.Value(val).Val;
+				return GetValue (fieldname).Val;
 			}
 			set{
-				var val = new GLib.Value(value);
-				gst_structure_set_value (Handle,fieldname,ref val);
-				val.Dispose ();
+				SetValue (fieldname,new GLib.Value(value));
 			}
 		}
 		public int FieldCount {
 			get{return gst_structure_n_fields (Handle);}
+		}
+		public string FieldName(int index){
+			return Marshal.PtrToStringAuto (gst_structure_nth_field_name (Handle,index));
+		}
+		public GLib.Value GetValue(string fieldname){
+			return new GLib.Value(gst_structure_get_value (Handle,fieldname));
+		}
+		public void SetValue(string fieldname, GLib.Value val){
+			gst_structure_set_value (Handle,fieldname,ref val);
 		}
 	}
 }

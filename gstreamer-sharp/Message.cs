@@ -48,7 +48,6 @@ namespace Gst
 
 		[DllImport(Application.GlueDll)]
 		static extern uint gstsharp_gst_message_get_src_offset ();
-
 		
 		public Message (IntPtr raw) : base(raw)
 		{

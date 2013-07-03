@@ -24,9 +24,25 @@ namespace Gst
 		Always, Sometimes, Request
 	}
 
+	[Flags]
+	public enum PadTemplateFlags
+	{
+		Last = ObjectFlags.Last << 4
+	}
+
 	public class PadTemplate : Gst.Object
 	{
+		[DllImport(Application.Dll)]
+		static extern IntPtr gst_pad_template_new([MarshalAs(UnmanagedType.LPStr)] string name,
+		                                          PadDirection direction, PadPresence presence,
+		                                          IntPtr caps);
 
+		public PadTemplate(IntPtr raw) : base(raw)
+		{}
+		public PadTemplate (string name, PadDirection direction, PadPresence presence, Caps caps) : base(IntPtr.Zero)
+		{
+			Raw = gst_pad_template_new (name,direction,presence,caps.Handle);
+		}
 	}
 
 	public class Pad : Gst.Object

@@ -81,6 +81,12 @@
     <Compile Include="Base\BaseSink.cs" />
     <Compile Include="Video\ColorBalanceChannel.cs" />
     <Compile Include="Segment.cs" />
+    <Compile Include="GLib\Quark.cs" />
+    <Compile Include="GstSharp\StructureFunc.cs" />
+    <Compile Include="GLib\Error.cs" />
+    <Compile Include="ObjectUtility.cs" />
+    <Compile Include="Base\BaseSrc.cs" />
+    <Compile Include="BufferPool.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -91,5 +97,6 @@
     <Folder Include="Value\" />
     <Folder Include="Utils\" />
     <Folder Include="Base\" />
+    <Folder Include="GLib\" />
   </ItemGroup>
 </Project>

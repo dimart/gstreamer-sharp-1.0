@@ -7,3 +7,4 @@ Name: Gst#
 Description: Gst# - GStreamer .NET Binding
 Version: 1.0.7
 Libs: -r:${libdir}/cli/gstreamer-sharp-1.0/gstreamer-sharp.dll
+Requires: glib-sharp-3.0

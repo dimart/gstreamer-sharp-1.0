@@ -3,17 +3,53 @@ using System.Runtime.InteropServices;
 
 namespace Gst
 {
-	public class ElementFactory
+	public class ElementFactory : GLib.Opaque
 	{
-		[DllImport(Application.Dll)]
-		static extern IntPtr gst_element_factory_get_type ();
+		protected ElementFactory(IntPtr raw) : base(raw)
+		{}
+		protected ElementFactory() : base(IntPtr.Zero)
+		{}
 
 		[DllImport(Application.Dll)]
+		static extern IntPtr gst_element_factory_get_type ();
+		[DllImport(Application.Dll)]
+		static extern IntPtr gst_element_factory_find(IntPtr name);
+		[DllImport(Application.Dll)]
+		static extern IntPtr gst_element_factory_get_element_type(IntPtr factory);
+		[DllImport(Application.Dll)]
 		static extern IntPtr gst_element_factory_make(IntPtr factory_name, IntPtr name);
+		[DllImport(Application.Dll)]
+		static extern IntPtr gst_element_factory_create(IntPtr factory, IntPtr name);
+		[DllImport(Application.Dll)]
+		static extern IntPtr gst_element_factory_get_metadata(IntPtr factory, IntPtr key);
+		[DllImport(Application.Dll)]
+		static extern IntPtr gst_element_factory_get_metadata_keys(IntPtr factory);
 
 		public static GLib.GType GType {
 			get{
 				return new GLib.GType(gst_element_factory_get_type ());
+			}
+		}
+
+		public static ElementFactory Find (string name)
+		{
+			return new ElementFactory(gst_element_factory_find (Marshal.StringToHGlobalAuto(name)));
+		}
+		public Element Create (string name)
+		{
+			return new Element(gst_element_factory_create (Handle,Marshal.StringToHGlobalAuto (name)));
+		}
+		public string GetMetadata (string key)
+		{
+			return Marshal.PtrToStringAuto (
+				gst_element_factory_get_metadata(Handle,Marshal.StringToHGlobalAuto(key))
+			);
+		}
+		public string[] MetadataKeys {
+			get{
+				return GLib.Marshaller.PtrToStringArrayGFree (
+				gst_element_factory_get_metadata_keys (Handle)
+				);
 			}
 		}
 

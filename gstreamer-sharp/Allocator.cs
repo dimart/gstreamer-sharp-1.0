@@ -23,12 +23,16 @@ namespace Gst
 		{
 
 		}
+		public AllocationParams (GstAllocationParams prms) : this()
+		{
+			IntPtr i = IntPtr.Zero;
+			Marshal.StructureToPtr (prms,i,false);
+			Raw = i;
+		}
 		public AllocationParams(IntPtr raw) : base(raw)
 		{
-			gap = (GstAllocationParams)Marshal.PtrToStructure (raw,typeof(GstAllocationParams));
-		}
 
-		GstAllocationParams gap;
+		}
 
 		[DllImport(Application.Dll)]
 		static extern void gst_allocation_params_init(IntPtr ap);
@@ -42,6 +46,7 @@ namespace Gst
 				return ((GstAllocationParams)Marshal.PtrToStructure (Handle, typeof(GstAllocationParams))).flags;
 			}
 			set{
+				var gap = (GstAllocationParams)Marshal.PtrToStructure (Handle, typeof(GstAllocationParams));
 				gap.flags = value;
 				Marshal.StructureToPtr (gap,Handle,false);
 			}
