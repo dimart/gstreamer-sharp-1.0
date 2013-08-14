@@ -51,11 +51,11 @@ namespace Gst.BasePlugins
 		{}
 
 		public GLib.Object GetChildByName(string name){
-			return new GLib.Object(gst_child_proxy_get_child_by_name (Handle,Marshal.StringToHGlobalAuto (name)));
+			return GLib.Object.GetObject(gst_child_proxy_get_child_by_name (Handle,Marshal.StringToHGlobalAuto (name)));
 		}
 		public GLib.Object GetChildByIndex (uint index)
 		{
-			return new GLib.Object(gst_child_proxy_get_child_by_index(Handle,index));
+			return GLib.Object.GetObject(gst_child_proxy_get_child_by_index(Handle,index));
 		}
 		public uint ChildrenCount {
 			get{
@@ -85,16 +85,21 @@ namespace Gst.BasePlugins
 			}
 		}
 
-		public GLib.List Channels {
+		public List<ColorBalanceChannel> Channels {
 			get{
-				return new GLib.List(gst_color_balance_list_channels (Handle));
+				GLib.List l = new GLib.List(gst_color_balance_list_channels (Handle));
+				List<ColorBalanceChannel> c = new List<ColorBalanceChannel>();
+				for(int i=0; i<l.Count; i++)
+					c.Add ((ColorBalanceChannel)l[i]);
+				return c;
 			}
 		}
-		public int this [ColorBalanceChannel channel] {
-			get{
+
+		public int GetValue(ColorBalanceChannel channel){
 			return gst_color_balance_get_value (Handle,channel.Handle);
-			}
-			set{gst_color_balance_set_value (Handle,channel.Handle,value);}
+		}
+		public void SetValue(ColorBalanceChannel channel, int val){
+			gst_color_balance_set_value (Handle,channel.Handle,val);
 		}
 
 		public double Volume {
@@ -138,10 +143,12 @@ namespace Gst.BasePlugins
 		[GLib.Signal("about-to-finish")]
 		public event EventHandler AboutToFinish {
 			add{
-				AddSignalHandler ("about-to-finish",value);
+				var sig = GLib.Signal.Lookup(this,"about-to-finish");
+				sig.AddDelegate(value);
 			}
 			remove{
-				RemoveSignalHandler ("about-to-finish",value);
+				var sig = GLib.Signal.Lookup(this,"about-to-finish");
+				sig.RemoveDelegate(value);
 			}
 		}
 	}

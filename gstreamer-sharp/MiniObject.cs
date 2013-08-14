@@ -3,22 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Gst
 {
-	[Flags]
-	public enum MiniObjectFlags
-	{
-		Lockable     = 1 << 0,
-		LockReadOnly = 1 << 1,
-		Last         = 1 << 4
-	}
-	[Flags]
-	public enum LockFlags
-	{
-		Read      = 1 << 0,
-		Write     = 1 << 1,
-		Exclusive = 1 << 2,
-		Last      = 1 << 8
-	}
-
+	
 	public class MiniObject : IDisposable, GLib.IWrapper
 	{
 		delegate IntPtr cf(IntPtr data);
@@ -30,9 +15,9 @@ namespace Gst
 		  public IntPtr   type;
 			
 		  /*< public >*/ /* with COW */
-		 public int    refcount;
+		  int    refcount;
 		  int    lockstate;
-		 public uint   flags;
+		  uint   flags;
 		
 		  cf copy;
 		  df dispose;
@@ -46,12 +31,6 @@ namespace Gst
 		
 		[DllImport(Application.Dll)]
 		static extern void gst_mini_object_unref(IntPtr obj);
-		[DllImport(Application.Dll)]
-		public static extern bool gst_mini_object_lock(IntPtr obj, int flags);
-		[DllImport(Application.Dll)]
-		public static extern bool gst_mini_object_unlock(IntPtr obj, int flags);
-		[DllImport(Application.Dll)]
-		public static extern bool gst_mini_object_is_writable(IntPtr obj);
 
 		[DllImport(Application.GlueDll)]
 		static extern IntPtr gst_mini_object_get_type (IntPtr obj);
@@ -73,32 +52,10 @@ namespace Gst
 				return new GLib.GType(t);
 			}
 		}
-		public int RefCount {
-			get{
-				return ((GstMiniObject)Marshal.PtrToStructure (handle,typeof(GstMiniObject))).refcount;
-			}
-		}
-		public MiniObjectFlags Flags {
-			get{return (MiniObjectFlags)((GstMiniObject)Marshal.PtrToStructure (handle,typeof(GstMiniObject))).flags;}
-		}
 
 		public IntPtr Handle {
 			get{ return handle;}
 			set{handle = value;}
-		}
-
-		public bool Lock (LockFlags flags)
-		{
-			return gst_mini_object_lock (handle,(int)flags);
-		}
-		public bool Unlock (LockFlags flags)
-		{
-			return gst_mini_object_unlock (handle,(int)flags);
-		}
-		public bool IsWritable {
-			get{
-				return gst_mini_object_is_writable (handle);
-			}
 		}
 
 		public void Dispose(){

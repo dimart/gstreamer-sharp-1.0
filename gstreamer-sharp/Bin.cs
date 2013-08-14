@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace Gst
@@ -14,8 +13,6 @@ namespace Gst
 		static extern bool gst_bin_remove(IntPtr bin, IntPtr element);
 		[DllImport(Application.Dll)]
 		static extern IntPtr gst_bin_get_by_name(IntPtr bin, IntPtr name);
-		[DllImport(Application.Dll)]
-		static extern IntPtr gst_bin_iterate_elements(IntPtr bin);
 
 		public Bin (IntPtr raw) : base(raw)
 		{
@@ -38,31 +35,6 @@ namespace Gst
 
 		public Element GetByName(string name) {
 				return new Element(gst_bin_get_by_name (Raw,Marshal.StringToHGlobalAuto(name)));
-		}
-
-		public Iterator Elements {
-			get{
-				return new Iterator(gst_bin_iterate_elements (Handle));
-			}
-		}
-
-		[GLib.Signal("element-added")]
-		public event ElementHandler ElementAdded {
-			add{
-				AddSignalHandler ("element-added",value,typeof(ElementHandlerArgs));
-			}
-			remove{
-				RemoveSignalHandler ("element-added",value);
-			}
-		}
-		[GLib.Signal("element-removed")]
-		public event ElementHandler ElementRemoved {
-			add{
-				AddSignalHandler ("element-removed",value,typeof(ElementHandlerArgs));
-			}
-			remove{
-				RemoveSignalHandler ("element-removed",value);
-			}
 		}
 	}
 }

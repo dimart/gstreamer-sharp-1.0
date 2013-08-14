@@ -1,0 +1,255 @@
+Format: http://bzr.debian.org/scm/loggerhead/dep/dep5/trunk/annotate/132/dep5.mdwn
+Upstream-Name: gstreamer-sharp
+Upstream-Contact: Sebastian Dröge <sebastian.droege@collabora.co.uk>
+Source: http://gstreamer.freedesktop.org/modules/gstreamer-sharp.html
+
+Files: *
+Copyright: 2003-2009, Novell, Inc
+           2009, Sebastian Dröge <sebastian.droege@collabora.co.uk>
+License: LGPL-2.1+
+
+Files: gstreamer-sharp/Application.cs
+Copyright: 2002, Alp Toker <alp@atoker.com>
+           2006, Novell, Inc
+           2009, Sebastian Dröge <sebastian.droege@collabora.co.uk>
+License: LGPL-2.1+
+
+Files: gstreamer-sharp/MiniObject.cs
+Copyright: 2001-2003, Mike Kestner <mkestner@speakeasy.net>
+           2004-2005, Novell, Inc
+           2009, Sebastian Dröge <sebastian.droege@collabora.co.uk>
+License: LGPL-2
+
+Files: gstreamer-sharp/glib-sharp/*
+Copyright: 2003-2009, Novell, Inc
+License: LGPL-2
+
+Files: gstreamer-sharp/glib-sharp/GType.cs
+       gstreamer-sharp/glib-sharp/ListBase.cs
+       gstreamer-sharp/glib-sharp/Object.cs
+       gstreamer-sharp/glib-sharp/SignalArgs.cs
+       gstreamer-sharp/glib-sharp/SignalCallback.cs
+       gstreamer-sharp/glib-sharp/Timeout.cs
+       gstreamer-sharp/glib-sharp/Value.cs
+Copyright: 2001-2003, Mike Kestner <mkestner@speakeasy.net>
+           2003-2009, Novell, Inc
+License: LGPL-2
+
+Files: gstreamer-sharp/glib-sharp/FileUtils.cs
+       gstreamer-sharp/glib-sharp/Markup.cs
+Copyright: 2002-2003, Ximian, Inc
+License: LGPL-2
+
+Files: gstreamer-sharp/glib-sharp/Thread.cs
+Copyright: 2002, Alp Toker <alp@atoker.com>
+License: LGPL-2
+
+Files: gstreamer-sharp/glib-sharp/Opaque.cs
+Copyright: 2001, Bob Smith <bob@thestuff.net>
+           2001, Mike Kestner <mkestner@speakeasy.net>
+           2002, Rachel Hestilow <hestilow@ximian.com>
+           2004, Novell, Inc
+License: LGPL-2
+
+Files: gstreamer-sharp/glib-sharp/Log.cs
+Copyright: 2002, Gonzalo Paniagua <gonzalo@ximian.com>
+License: LGPL-2
+
+Files: gstreamer-sharp/glib-sharp/MainLoop.cs
+Copyright: 2004, Jeroen Zwartepoorte <jeroen@xs4all.nl>
+License: LGPL-2
+
+Files: gstreamer-sharp/glib-sharp/Idle.cs
+Copyright: 2002, Mike Kestner <mkestner@speakeasy.net>
+           2009, Novell, Inc
+           Rachel Hestilow <hestilow@ximian.com>
+License: LGPL-2
+
+Files: gstreamer-sharp/glib-sharp/Marshaller.cs
+Copyright: 2002-2003, Rachel Hestilow <hestilow@ximian.com>
+           2004, Novell, Inc
+License: LGPL-2
+
+Files: gstreamer-sharp/glib-sharp/DelegateWrapper.cs
+Copyright: 2002, Rachel Hestilow <hestilow@ximian.com>
+           2003, Ximian, Inc
+License: LGPL-2
+
+Files: gstreamer-sharp/glib-sharp/MainContext.cs
+Copyright: 2003, Radek Doulik <rodo@matfyz.cz>
+License: LGPL-2
+
+Files: gstreamer-sharp/glib-sharp/SignalAttribute.cs
+Copyright: Ricardo Fernández Pascual <ric@users.sourceforge.net>
+License: LGPL-2
+
+Files: gstreamer-sharp/glue/glib.c
+Copyright: 2005, Alp Toker <alp@atoker.com>
+License: LGPL-2
+
+Files: generator/*
+Copyright: 2001-2003, Mike Kestner <mkestner@speakeasy.net>
+           2003-2007, Novell, Inc
+License: GPL-2
+
+Files: generator/GObjectVM.cs
+       generator/ObjectBase.cs
+       generator/VirtualMethod.cs
+       generator/ClassField.cs
+       generator/InterfaceVM.cs
+       generator/DefaultSignalHandler.cs
+Copyright: 2003-2009, Novell, Inc
+           2009, Christian Hoff <christian_hoff@gmx.net>
+License: GPL-2
+
+Files: generator/ClassBase.cs
+Copyright: 2001-2003, Mike Kestner <mkestner@speakeasy.net>
+           2002, Rachel Hestilow <hestilow@ximian.com>
+           2004, Novell, Inc
+License: GPL-2
+
+Files: generator/MiniObjectGen.cs
+Copyright: 2001-2003, Mike Kestner <mkestner@speakeasy.net>
+           2003-2004, Novell, Inc
+           2009, Sebastian Dröge <sebastian.droege@collabora.co.uk>
+License: GPL-2
+
+Files: generator/Parser.cs
+Copyright: 2001-2003, Mike Kestner <mkestner@speakeasy.net>
+           2003, Ximian Inc
+License: GPL-2
+
+Files: generator/ConstStringGen.cs
+Copyright: 2003, Rachel Hestilow <hestilow@ximian.com>
+           2005, Novell, Inc
+License: GPL-2
+
+Files: parser/gapi_pp.pl
+Copyright: 2001, Mike Kestner <mkestner@speakeasy.net>
+           2003, Martin Willemoes Hansen <mwh@sysrq.dk>
+           2003-2004, Novell, Inc
+License: GPL-2
+
+Files: parser/gapi2xml.pl
+Copyright: 2001-2003, Mike Kestner <mkestner@speakeasy.net>
+           2003-2009, Novell, Inc
+License: GPL-2
+
+Files: parser/gst-gapi-fixup.cs
+Copyright: 2003, Mike Kestner <mkestner@speakeasy.net>
+           2009, Sebastian Dröge <sebastian.droege@collabora.co.uk>
+License: GPL-2
+
+Files: tests/BufferTest.cs
+       tests/MessageTest.cs
+       tests/PipelineTest.cs
+Copyright: 2006, Khaled Mohammed <khaled.mohammed@gmail.com>
+License: LGPL-2.1+
+
+Files: elementgen/gst-xmlinspect.c
+Copyright: 2003, Wim Taymans <wtay@chello.be>
+           2009, Sebastian Dröge <sebastian.droege@collabora.co.uk>
+License: LGPL-2+
+
+Files: samples/MetaData.cs
+Copyright: 2006, Khaled Mohammed <khaled.mohammed@gmail.com>
+           2008, Paul Burton <paulburton89@gmail.com>
+License: LGPL-2.1+
+
+Files: samples/AppSrc.cs
+Copyright: 2009, Maarten Bosmans <mkbosmans@gmail.com>
+License: LGPL-2.1+
+
+Files: samples/GtkVideoPlayer.cs
+Copyright: 2008, Paul Burton <paulburton89@gmail.com>
+License: LGPL-2.1+
+
+Files: debian/*
+Copyright: 2011, Chow Loong Jin <hyperair@ubuntu.com>
+License: GPL-2+
+
+License: GPL-2
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+
+License: GPL-2+
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+
+License: LGPL-2.1+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston MA  02110-1301 USA
+ .
+ On Debian systems, the complete text of the Library GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/LGPL-2.1".
+
+License: LGPL-2+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+ .
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston MA  02110-1301 USA.
+ .
+ On Debian systems, the complete text of the Library GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/LGPL-2".
+
+License: LGPL-2
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+ .
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston MA  02110-1301 USA.
+ .
+ On Debian systems, the complete text of the Library GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/LGPL-2"

@@ -35,8 +35,8 @@ namespace Gst
 			}
 
 			public bool MoveNext(){
-				if(val == IntPtr.Zero)return false;
 				gst_iterator_next (i.Handle,val);
+				if(val == IntPtr.Zero)return false;
 				return true;
 			}
 

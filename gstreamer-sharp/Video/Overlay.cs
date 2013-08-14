@@ -4,6 +4,16 @@ using System.Runtime.InteropServices;
 
 namespace Gst.Video
 {
+	public static class VideoUtility
+	{
+		[DllImport(Application.VideoDll)]
+		static extern bool gst_is_video_overlay_prepare_window_handle_message (IntPtr msg);
+	
+		public static bool IsPrepareWindowHandle(this Gst.Message message){
+			return gst_is_video_overlay_prepare_window_handle_message (message.Handle);
+		}
+	}
+
 	public interface Overlay : GLib.IWrapper
 	{
 		void Expose();

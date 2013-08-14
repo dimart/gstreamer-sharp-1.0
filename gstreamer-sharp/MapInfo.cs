@@ -3,6 +3,14 @@ using System.Runtime.InteropServices;
 
 namespace Gst
 {
+	public enum LockFlags
+	{
+		Read      = 1 << 0,
+		Write     = 1 << 1,
+		Exclusive = 1 << 2,
+		Last      = 1 << 8
+	}
+
 	public enum MapFlags
 	{
 		Read = LockFlags.Read,
@@ -22,38 +30,34 @@ namespace Gst
 			IntPtr user_data;
 			IntPtr _gst_reserved;
 		}
-		[DllImport(Application.GlueDll)]
-		static extern void gstsharp_memory_get_info_data(IntPtr memory, int flags, out IntPtr data, out long length);
 
-		public GstMapInfo i;
+		IntPtr ptr;
 
-		public MapInfo (GstMapInfo info)
+		public MapInfo (IntPtr raw)
 		{
-			i = info;
-		}
-
-		public Gst.Memory Memory {
-			get{return new Gst.Memory(i.memory);}
+			ptr = raw;
 		}
 
 		public MapFlags Flags {
 			get{
-				return (MapFlags)i.flags;
+				GstMapInfo info = (GstMapInfo)Marshal.PtrToStructure (ptr,typeof(GstMapInfo));
+				return (MapFlags)info.flags;
 			}
 		}
+
 		public byte[] Data {
 			get{
-				IntPtr o;
-				long l;
-				gstsharp_memory_get_info_data (i.memory,i.flags,out o, out l);
-				byte[] data = new byte[l];
-				Marshal.Copy (o,data,0,(int)l);
-				return data;
+				GstMapInfo info = (GstMapInfo)Marshal.PtrToStructure (ptr,typeof(GstMapInfo));
+				Console.WriteLine (info.size);
+//			Marshal.Copy (info.data,data,0,(int)info.size);
+				return new byte[]{1};
 			}
 		}
+
 		public long MaxSize {
 			get{
-				return i.maxsize;
+				GstMapInfo info = (GstMapInfo)Marshal.PtrToStructure (ptr,typeof(GstMapInfo));
+				return info.maxsize;
 			}
 		}
 	}

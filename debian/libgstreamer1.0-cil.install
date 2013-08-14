@@ -1,0 +1,2 @@
+/usr/lib/libgstglue-1.0.so                      /usr/lib/
+/usr/lib/mono/gac/gstreamer-sharp/1.0.*/gstreamer-sharp.dll*    /usr/lib/cli/gstreamer-sharp-1.0/

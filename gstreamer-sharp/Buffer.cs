@@ -17,8 +17,6 @@ namespace Gst
 		[DllImport(Application.Dll)]
 		static extern void gst_buffer_insert_memory(IntPtr buffer, int index, IntPtr memory);
 		[DllImport(Application.Dll)]
-		static extern void gst_buffer_append_memory(IntPtr buffer, IntPtr memory);
-		[DllImport(Application.Dll)]
 		static extern void  gst_buffer_remove_memory(IntPtr buffer, int index);
 		[DllImport(Application.Dll)]
 		static extern IntPtr gst_buffer_get_memory(IntPtr buffer, int index);
@@ -27,19 +25,6 @@ namespace Gst
 		[DllImport(Application.Dll)]
 		static extern uint gst_buffer_n_memory(IntPtr buffer);
 
-		[StructLayout(LayoutKind.Sequential)]
-		struct GstBuffer {
-			public IntPtr mini_object;
-			  /*< public >*/ /* with COW */
-			  IntPtr pool;
-			  /* timestamp */
-			public UInt64 pts;
-			public UInt64 dts;
-			public UInt64 duration;
-			  /* media specific offset */
-			public UInt64 offset;
-			public UInt64 offset_end;
-		}
 		public Buffer (IntPtr raw) : base(raw)
 		{}
 
@@ -50,13 +35,9 @@ namespace Gst
 
 		public Buffer (byte[] data) : base(IntPtr.Zero)
 		{
-			IntPtr ptr;
+			IntPtr ptr = IntPtr.Zero;
 			Marshal.Copy(data,0,ptr,data.Length);
 			Handle = gst_buffer_new_wrapped (ptr,(uint)data.Length);
-		}
-
-		public void Append(Memory m){
-			gst_buffer_append_memory (Handle,m.Handle);
 		}
 
 		public int IndexOf(Memory m){
@@ -85,7 +66,6 @@ namespace Gst
 				return (int)gst_buffer_n_memory(Handle);
 			}
 		}
-
 	}
 }
 

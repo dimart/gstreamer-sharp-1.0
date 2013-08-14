@@ -32,9 +32,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="glib-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <Private>False</Private>
-      <Package>glib-sharp-3.0</Package>
+      <Package>glib-sharp-2.0</Package>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -73,20 +73,7 @@
     <Compile Include="Query.cs" />
     <Compile Include="TagSetter.cs" />
     <Compile Include="Iterator.cs" />
-    <Compile Include="ElementHandler.cs" />
-    <Compile Include="Value\Value.cs" />
-    <Compile Include="Value\ValueTable.cs" />
-    <Compile Include="Utils\Utils.cs" />
-    <Compile Include="Format.cs" />
-    <Compile Include="Base\BaseSink.cs" />
-    <Compile Include="Video\ColorBalanceChannel.cs" />
-    <Compile Include="Segment.cs" />
-    <Compile Include="GLib\Quark.cs" />
-    <Compile Include="GstSharp\StructureFunc.cs" />
-    <Compile Include="GLib\Error.cs" />
-    <Compile Include="ObjectUtility.cs" />
-    <Compile Include="Base\BaseSrc.cs" />
-    <Compile Include="BufferPool.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -94,9 +81,5 @@
     <Folder Include="Video\" />
     <Folder Include="BasePlugins\" />
     <Folder Include="Audio\" />
-    <Folder Include="Value\" />
-    <Folder Include="Utils\" />
-    <Folder Include="Base\" />
-    <Folder Include="GLib\" />
   </ItemGroup>
 </Project>
