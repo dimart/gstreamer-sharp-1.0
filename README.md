@@ -1,9 +1,12 @@
-mee
+gstreamer-sharp-1.0
 ===
 
-a library written with Vala without dependencies, who contains :
-- Xml api, with Html & Rss
-- Json api
-- Collections namespace
+C# bindings of gstreamer-1.0 (actually 1.0.6)
 
-and other utilities in the root namespace.
+how to compile:
+  - ./autogen.sh
+  - make
+  - sudo make install
+
+for debian systems, if you want .deb packages:
+  - fakeroot debian/rules binary
