@@ -147,36 +147,30 @@ namespace Gst
 		[GLib.Signal("pad-added")]
 		public event PadHandler PadAdded {
 			add{
-				var sig  = GLib.Signal.Lookup(this,"pad-added",typeof(PadHandlerArgs));
-				sig.AddDelegate(value);
+				base.AddSignalHandler("pad-added",value,typeof(PadHandlerArgs));
 			}
 			remove{			
-				var sig  = GLib.Signal.Lookup(this,"pad-added",typeof(PadHandlerArgs));
-				sig.RemoveDelegate(value);
+				base.RemoveSignalHandler ("pad-added", value);
 			}
 		}
 
 		[GLib.Signal("pad-removed")]
 		public event PadHandler PadRemoved {
 			add{
-				var sig  = GLib.Signal.Lookup(this,"pad-removed",typeof(PadHandlerArgs));
-				sig.AddDelegate(value);
+				base.AddSignalHandler("pad-removed",value,typeof(PadHandlerArgs));
 			}
 			remove{			
-				var sig  = GLib.Signal.Lookup(this,"pad-removed",typeof(PadHandlerArgs));
-				sig.RemoveDelegate (value);
+				base.RemoveSignalHandler ("pad-removed", value);
 			}
 		}
 
 		[GLib.Signal("no-more-pads")]
 		public event EventHandler NoMorePads {
 			add{
-				var sig  = GLib.Signal.Lookup(this,"no-more-pads");
-				sig.AddDelegate(value);
+				base.AddSignalHandler("no-more-pads",value);
 			}
 			remove{
-				var sig  = GLib.Signal.Lookup(this,"no-more-pads");
-				sig.RemoveDelegate(value);
+				base.RemoveSignalHandler ("no-more-pads", value);
 			}
 		}
 	}

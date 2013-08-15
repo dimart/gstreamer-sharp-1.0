@@ -109,28 +109,24 @@ namespace Gst
 		{
 			add
 			{
-				var sig  = Signal.Lookup(this,"message");
-				sig.AddDelegate(value);
+				base.AddSignalHandler("message",value,typeof(MessageArgs));
 			}
 			remove
 			{
-				var sig  = Signal.Lookup(this,"message");
-				sig.RemoveDelegate (value);
+				base.RemoveSignalHandler ("message", value);
 			}
 		}
 		
 		[Signal ("sync-message")]
-		public event SyncMessageHandler SyncMessage
+		public event MessageHandler SyncMessage
 		{
 			add
 			{
-				var sig  = Signal.Lookup(this,"sync-message");
-				sig.AddDelegate(value);
+				base.AddSignalHandler("sync-message",value,typeof(MessageArgs));
 			}
 			remove
 			{
-				var sig  = Signal.Lookup(this,"sync-message");
-				sig.RemoveDelegate(value);
+				base.RemoveSignalHandler ("sync-message", value);
 			}
 		}
 	}

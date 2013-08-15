@@ -143,12 +143,10 @@ namespace Gst.BasePlugins
 		[GLib.Signal("about-to-finish")]
 		public event EventHandler AboutToFinish {
 			add{
-				var sig = GLib.Signal.Lookup(this,"about-to-finish");
-				sig.AddDelegate(value);
+				base.AddSignalHandler("about-to-finish",value);
 			}
 			remove{
-				var sig = GLib.Signal.Lookup(this,"about-to-finish");
-				sig.RemoveDelegate(value);
+				base.RemoveSignalHandler ("about-to-finish", value);
 			}
 		}
 	}
