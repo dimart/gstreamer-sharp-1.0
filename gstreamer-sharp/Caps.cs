@@ -3,6 +3,18 @@ using System.Runtime.InteropServices;
 
 namespace Gst
 {
+	[Flags]
+	public enum CapsFlags
+	{
+		Any = MiniObjectFlags.Last << 0
+	}
+
+	public enum CapsIntersectMode
+	{
+		ZigZag = 0,
+		First  = 1
+	}
+
 	public class Caps : MiniObject
 	{
 		[DllImport(Application.Dll)]
@@ -15,6 +27,14 @@ namespace Gst
 		static extern IntPtr gst_caps_get_structure(IntPtr caps, int index);
 		[DllImport(Application.Dll)]
 		static extern uint gst_caps_get_size(IntPtr caps);
+		[DllImport(Application.Dll)]
+		static extern void gst_caps_append (IntPtr caps1, IntPtr caps2);
+		[DllImport(Application.Dll)]
+		static extern void gst_caps_append_structure (IntPtr caps, IntPtr structure);
+		[DllImport(Application.Dll)]
+		static extern void gst_caps_merge (IntPtr caps1, IntPtr caps2);
+		[DllImport(Application.Dll)]
+		static extern void gst_caps_merge_structure (IntPtr caps, IntPtr structure);
 
 		public Caps (IntPtr raw) : base(raw)
 		{
@@ -39,7 +59,20 @@ namespace Gst
 			}
 		}
 
-		public string ToString(){
+		public void Append(Caps caps){
+			gst_caps_append (Handle, caps.Handle);
+		}
+		public void Append(Structure structure){
+			gst_caps_append_structure (Handle, structure.Handle);
+		}
+		public void Merge(Caps caps){
+			gst_caps_merge (Handle, caps.Handle);
+		}
+		public void Merge(Structure structure){
+			gst_caps_merge_structure (Handle, structure.Handle);
+		}
+
+		public override string ToString(){
 			return Marshal.PtrToStringAuto (gst_caps_to_string (Handle));
 		}
 	}

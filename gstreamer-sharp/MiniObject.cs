@@ -3,7 +3,14 @@ using System.Runtime.InteropServices;
 
 namespace Gst
 {
-	
+	[Flags]
+	public enum MiniObjectFlags
+	{
+		Lockable     = 1 << 0,
+		LockReadOnly = 1 << 1,
+		Last         = 1 << 4
+	}
+
 	public class MiniObject : IDisposable, GLib.IWrapper
 	{
 		delegate IntPtr cf(IntPtr data);
@@ -31,11 +38,32 @@ namespace Gst
 		
 		[DllImport(Application.Dll)]
 		static extern void gst_mini_object_unref(IntPtr obj);
-
+		[DllImport(Application.Dll)]
+		static extern IntPtr gst_mini_object_ref (IntPtr obj);
+		[DllImport(Application.Dll)]
+		static extern void gst_mini_object_replace (ref IntPtr obj, IntPtr newobj);
+		[DllImport(Application.Dll)]
+		static extern void gst_mini_object_take (ref IntPtr obj, IntPtr newobj);
 		[DllImport(Application.GlueDll)]
-		static extern IntPtr gst_mini_object_get_type (IntPtr obj);
+		static extern IntPtr gstsharp_g_type_from_instance (IntPtr instance);
 
 		IntPtr handle;
+
+		public static MiniObject Replace(MiniObject obj){
+			IntPtr old = obj.handle;
+			IntPtr ptr = IntPtr.Zero;
+			gst_mini_object_replace (ref old, ptr);
+			obj.Handle = old;
+			return new MiniObject (ptr);
+		}
+
+		public static MiniObject Take(MiniObject obj){
+			IntPtr old = obj.handle;
+			IntPtr ptr = IntPtr.Zero;
+			gst_mini_object_take (ref old, ptr);
+			obj.Handle = old;
+			return new MiniObject (ptr);
+		}
 
 		public MiniObject () : this(IntPtr.Zero)
 		{
@@ -43,19 +71,18 @@ namespace Gst
 
 		public MiniObject (IntPtr raw)
 		{
-			handle = raw;
+			handle = gst_mini_object_ref (raw);
 		}
 
 		public GLib.GType GType {
 			get{
-				IntPtr t = ((GstMiniObject)Marshal.PtrToStructure (handle,typeof(GstMiniObject))).type;
-				return new GLib.GType(t);
+				return new GLib.GType (gstsharp_g_type_from_instance(handle));
 			}
 		}
 
 		public IntPtr Handle {
 			get{ return handle;}
-			set{handle = value;}
+			internal set{handle = value;}
 		}
 
 		public void Dispose(){
