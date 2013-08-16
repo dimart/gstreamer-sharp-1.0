@@ -6,6 +6,7 @@ GstObject *gst_message_get_src(GstMessage *message);
 guint
 gstsharp_gst_message_get_src_offset (void);
 
+
 GstObject *gst_message_get_src(GstMessage *message){
 	return message->src;
 }

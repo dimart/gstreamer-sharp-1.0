@@ -74,6 +74,8 @@
     <Compile Include="TagSetter.cs" />
     <Compile Include="Iterator.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="Format.cs" />
+    <Compile Include="Base\Adapter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -81,5 +83,6 @@
     <Folder Include="Video\" />
     <Folder Include="BasePlugins\" />
     <Folder Include="Audio\" />
+    <Folder Include="Base\" />
   </ItemGroup>
 </Project>

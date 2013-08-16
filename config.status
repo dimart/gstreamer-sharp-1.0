@@ -437,7 +437,7 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/yannick/Documents/gstreamer-sharp-1.0.7'
+ac_pwd='/home/yannick/gstreamer-sharp-1.0'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/bin/mkdir -p'
@@ -821,7 +821,7 @@ S["LTLIBOBJS"]=""
 S["LIBOBJS"]=""
 S["GACUTIL_FLAGS"]="/package $(PACKAGE_VERSION) /gacdir $(libdir) /root $(DESTDIR)/$(libdir)"
 S["GACUTIL"]="gacutil"
-S["GST_LIBS"]="-pthread -lgstreamer-1.0 -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lglib-2.0  "
+S["GST_LIBS"]="-pthread -lgstreamer-1.0 -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lglib-2.0 -lglib-utils  "
 S["GST_CFLAGS"]="-pthread -I/usr/include/gstreamer-1.0 -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include  "
 S["CSC"]="/usr/bin/gmcs"
 S["MONO"]="/usr/bin/mono"
@@ -895,12 +895,12 @@ S["mkdir_p"]="/bin/mkdir -p"
 S["MKDIR_P"]="/bin/mkdir -p"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"
 S["STRIP"]="strip"
-S["install_sh"]="${SHELL} /home/yannick/Documents/gstreamer-sharp-1.0.7/install-sh"
-S["MAKEINFO"]="${SHELL} /home/yannick/Documents/gstreamer-sharp-1.0.7/missing --run makeinfo"
-S["AUTOHEADER"]="${SHELL} /home/yannick/Documents/gstreamer-sharp-1.0.7/missing --run autoheader"
-S["AUTOMAKE"]="${SHELL} /home/yannick/Documents/gstreamer-sharp-1.0.7/missing --run automake-1.11"
-S["AUTOCONF"]="${SHELL} /home/yannick/Documents/gstreamer-sharp-1.0.7/missing --run autoconf"
-S["ACLOCAL"]="${SHELL} /home/yannick/Documents/gstreamer-sharp-1.0.7/missing --run aclocal-1.11"
+S["install_sh"]="${SHELL} /home/yannick/gstreamer-sharp-1.0/install-sh"
+S["MAKEINFO"]="${SHELL} /home/yannick/gstreamer-sharp-1.0/missing --run makeinfo"
+S["AUTOHEADER"]="${SHELL} /home/yannick/gstreamer-sharp-1.0/missing --run autoheader"
+S["AUTOMAKE"]="${SHELL} /home/yannick/gstreamer-sharp-1.0/missing --run automake-1.11"
+S["AUTOCONF"]="${SHELL} /home/yannick/gstreamer-sharp-1.0/missing --run autoconf"
+S["ACLOCAL"]="${SHELL} /home/yannick/gstreamer-sharp-1.0/missing --run aclocal-1.11"
 S["VERSION"]="1.0.7"
 S["PACKAGE"]="gstreamer-sharp"
 S["CYGPATH_W"]="echo"

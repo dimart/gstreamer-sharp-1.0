@@ -13,6 +13,7 @@ override_dh_clideps:
 	dh_clideps --exclude-moduleref=gstreamer-1.0 \
 		--exclude-moduleref=gstvideo-1.0 \
 		--exclude-moduleref=gstaudio-1.0 \
+		--exclude-moduleref=gstbase-1.0 \
 		--exclude-moduleref=gobject-2.0 \
 		--exclude-moduleref=libgstglue-1.0.so
 
