@@ -76,6 +76,7 @@
     <Compile Include="Utils.cs" />
     <Compile Include="Format.cs" />
     <Compile Include="Base\Adapter.cs" />
+    <Compile Include="Base\BaseSrc.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

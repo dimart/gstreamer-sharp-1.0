@@ -98,8 +98,8 @@ distclean-local:
 $(ASSEMBLY_MDB): $(ASSEMBLY) 
 
 make-glue:
-	gcc -Wall -fPIC -c glue/glue.c `pkg-config --cflags --libs gstreamer-1.0` \
-	&& gcc -shared -Wl,-soname,libgstglue-1.0.so -o libgstglue-1.0.so glue.o `pkg-config --cflags --libs gstreamer-1.0`
+	gcc -Wall -fPIC -c glue/*.c `pkg-config --cflags --libs gstreamer-base-1.0` \
+	&& gcc -shared -Wl,-soname,libgstglue-1.0.so -o libgstglue-1.0.so *.o `pkg-config --cflags --libs gstreamer-base-1.0`
 
 $(ASSEMBLY): $(FILES)
 	$(CSC) $(ASSEMBLY_COMPILER_FLAGS) -out:$(ASSEMBLY) -target:$(COMPILE_TARGET) -r:System.Core -pkg:glib-sharp-2.0 $(FILES)

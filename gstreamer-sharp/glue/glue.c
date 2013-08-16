@@ -1,11 +1,11 @@
 #include <gst/gst.h>
 
+
 GType
 gstsharp_g_type_from_instance (GTypeInstance * instance);
 GstObject *gst_message_get_src(GstMessage *message);
 guint
 gstsharp_gst_message_get_src_offset (void);
-
 
 GstObject *gst_message_get_src(GstMessage *message){
 	return message->src;
@@ -29,3 +29,4 @@ gstsharp_memory_get_info(GstMemory *memory, GstMapFlags flags){
 	gst_memory_map(memory,&info,flags);
 	return &info;
 }
+
