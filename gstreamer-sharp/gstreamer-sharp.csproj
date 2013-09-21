@@ -79,6 +79,7 @@
     <Compile Include="Base\BaseSrc.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="BufferList.cs" />
+    <Compile Include="Segment.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

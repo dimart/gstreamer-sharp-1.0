@@ -72,9 +72,17 @@ namespace Gst
 		[DllImport(Application.Dll)]
 		static extern UInt64 gst_element_get_start_time      (IntPtr element);
 		[DllImport(Application.Dll)]
-		static extern IntPtr gst_element_query(IntPtr element);
-		[DllImport(Application.Dll)]
 		static extern IntPtr gst_element_iterate_pads(IntPtr element);
+		[DllImport(Application.Dll)]
+		static extern bool gst_element_link (IntPtr element, IntPtr other);
+		[DllImport(Application.Dll)]
+		static extern bool gst_element_seek (IntPtr element, double rate, Format format, SeekFlags flags,
+		                                     SeekType stype, Int64 start, SeekType etype, Int64 end);
+		[DllImport(Application.Dll)]
+		static extern bool gst_element_seek_simple (IntPtr element, Format format, SeekFlags flags,
+		                            Int64 position);
+		[DllImport(Application.Dll)]
+		static extern bool gst_element_query (IntPtr element, IntPtr query);
 
 		public Element (IntPtr raw) : base(raw)
 		{
@@ -107,9 +115,8 @@ namespace Gst
 			get{return new Gst.Bus(gst_element_get_bus (Raw));}
 			set{gst_element_set_bus (Raw,value.Handle);}
 		}
-
-		public Gst.Query Query {
-			get{return new Gst.Query(gst_element_query (Raw));}
+		public bool Link (Element element){
+			return gst_element_link (Handle, element.Handle);
 		}
 
 		public StateChangeReturn SetState(State state){
@@ -136,6 +143,17 @@ namespace Gst
 			set{
 				SetState (value);
 			}
+		}
+
+		public bool Seek(Format format, double rate, SeekFlags flags, SeekType start_type, Int64 start,
+		                 SeekType end_type, Int64 end){
+			return gst_element_seek (Handle, rate, format, flags, start_type, start, end_type, end);
+		}
+		public bool Seek(Format format, SeekFlags flags, Int64 position){
+			return gst_element_seek_simple (Handle, format, flags, position);
+		}
+		public bool Query(Gst.Query query){
+			return gst_element_query (Handle,query);
 		}
 
 		public Iterator Pads {

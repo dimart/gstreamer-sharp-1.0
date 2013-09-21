@@ -1,16 +1,20 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="gstreamer-sharp/BufferList.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="gstreamer-sharp/Segment.cs">
     <Files>
-      <File FileName="../../../../usr/include/gstreamer-1.0/gst/gstbufferlist.h" Line="154" Column="45" />
-      <File FileName="gstreamer-sharp/BufferList.cs" Line="14" Column="31" />
+      <File FileName="../../../../usr/include/gstreamer-1.0/gst/gstbufferlist.h" Line="1" Column="1" />
+      <File FileName="gstreamer-sharp/BufferList.cs" Line="1" Column="1" />
+      <File FileName="gstreamer-sharp/Element.cs" Line="1" Column="1" />
+      <File FileName="../../../../usr/include/gstreamer-1.0/gst/gstutils.h" Line="876" Column="36" />
+      <File FileName="../../../../usr/include/gstreamer-1.0/gst/gstsegment.h" Line="186" Column="30" />
+      <File FileName="gstreamer-sharp/Segment.cs" Line="41" Column="54" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="gstreamer-sharp" expanded="True">
             <Node name="References" expanded="True" />
-            <Node name="BufferList.cs" selected="True" />
+            <Node name="Segment.cs" selected="True" />
           </Node>
         </State>
       </Pad>

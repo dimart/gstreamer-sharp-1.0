@@ -34,7 +34,7 @@ namespace Gst
 			}
 		}
 
-		public Gst.Clock Clock {
+		public new Gst.Clock Clock {
 			get {
 				return new Gst.Clock (gst_pipeline_get_clock (Handle));
 			}

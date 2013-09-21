@@ -64,6 +64,7 @@ FILES = \
 	Pipeline.cs \
 	Query.cs \
 	Sample.cs \
+	Segment.cs \
 	State.cs \
 	Structure.cs \
 	TagSetter.cs \
