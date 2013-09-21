@@ -153,7 +153,7 @@ namespace Gst
 			return gst_element_seek_simple (Handle, format, flags, position);
 		}
 		public bool Query(Gst.Query query){
-			return gst_element_query (Handle,query);
+			return gst_element_query (Handle,query.Handle);
 		}
 
 		public Iterator Pads {

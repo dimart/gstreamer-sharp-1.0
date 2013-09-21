@@ -52,7 +52,6 @@
     <Compile Include="GstSharp\BusFunc.cs" />
     <Compile Include="Video\Overlay.cs" />
     <Compile Include="BasePlugins\PlaySink.cs" />
-    <Compile Include="FakeObject.cs" />
     <Compile Include="Allocator.cs" />
     <Compile Include="Bin.cs" />
     <Compile Include="Buffer.cs" />
@@ -80,6 +79,8 @@
     <Compile Include="Context.cs" />
     <Compile Include="BufferList.cs" />
     <Compile Include="Segment.cs" />
+    <Compile Include="BufferPool.cs" />
+    <Compile Include="CapsFeatures.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

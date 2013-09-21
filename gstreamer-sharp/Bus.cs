@@ -50,7 +50,13 @@ namespace Gst
 		static extern IntPtr gst_bus_pop(IntPtr bus);
 		
 		[DllImport(Application.Dll)]
-		static extern IntPtr gst_bus_pop_filtered(IntPtr bus,int message_type);
+		static extern IntPtr gst_bus_pop_filtered(IntPtr bus,MessageType message_type);
+
+		[DllImport(Application.Dll)]
+		static extern IntPtr gst_bus_timed_pop(IntPtr bus, UInt64 timeout);
+
+		[DllImport(Application.Dll)]
+		static extern IntPtr gst_bus_timed_pop_filtered(IntPtr bus, UInt64 timeout, MessageType message_type);
 
 		public Bus()
 		{
@@ -68,7 +74,13 @@ namespace Gst
 
 		public Message Pop (MessageType type)
 		{
-			return new Gst.Message(gst_bus_pop_filtered (Handle,(int)type));
+			return new Gst.Message(gst_bus_pop_filtered (Handle,type));
+		}
+		public Message Pop (UInt64 timeout){
+			return new Gst.Message (gst_bus_timed_pop (Handle,timeout));
+		}
+		public Message Pop (UInt64 timeout, MessageType type){
+			return new Gst.Message (gst_bus_timed_pop_filtered (Handle,timeout,type));
 		}
 
 		public bool Post (Message message)
