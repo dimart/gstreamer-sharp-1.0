@@ -37,9 +37,9 @@ namespace Gst
 		}
 		
 		[DllImport(Application.Dll)]
-		static extern void gst_mini_object_unref(IntPtr obj);
+		internal static extern void gst_mini_object_unref(IntPtr obj);
 		[DllImport(Application.Dll)]
-		static extern IntPtr gst_mini_object_ref (IntPtr obj);
+		internal static extern IntPtr gst_mini_object_ref (IntPtr obj);
 		[DllImport(Application.Dll)]
 		static extern void gst_mini_object_replace (ref IntPtr obj, IntPtr newobj);
 		[DllImport(Application.Dll)]
@@ -71,7 +71,7 @@ namespace Gst
 
 		public MiniObject (IntPtr raw)
 		{
-			handle = gst_mini_object_ref (raw);
+			handle = raw;
 		}
 
 		public GLib.GType GType {

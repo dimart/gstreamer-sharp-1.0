@@ -25,19 +25,23 @@ namespace Gst
 		[DllImport(Application.Dll)]
 		static extern uint gst_buffer_n_memory(IntPtr buffer);
 
+		~Buffer(){
+			MiniObject.gst_mini_object_unref (Handle);
+		}
+
 		public Buffer (IntPtr raw) : base(raw)
 		{}
 
-		public Buffer () : base(IntPtr.Zero)
+		public Buffer ()
+			: this(gst_buffer_new ())
 		{
-			Handle = gst_buffer_new ();
 		}
 
 		public Buffer (byte[] data) : base(IntPtr.Zero)
 		{
 			IntPtr ptr = IntPtr.Zero;
 			Marshal.Copy(data,0,ptr,data.Length);
-			Handle = gst_buffer_new_wrapped (ptr,(uint)data.Length);
+			Handle = MiniObject.gst_mini_object_ref (gst_buffer_new_wrapped (ptr,(uint)data.Length));
 		}
 
 		public int IndexOf(Memory m){
