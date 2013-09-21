@@ -25,8 +25,10 @@ namespace Gst
 		[DllImport(Application.Dll)]
 		static extern uint gst_buffer_n_memory(IntPtr buffer);
 
-		~Buffer(){
-			MiniObject.gst_mini_object_unref (Handle);
+		static IntPtr copy_data(byte[] data){
+			IntPtr ptr = IntPtr.Zero;
+			Marshal.Copy(data,0,ptr,data.Length);
+			return ptr;
 		}
 
 		public Buffer (IntPtr raw) : base(raw)
@@ -37,11 +39,10 @@ namespace Gst
 		{
 		}
 
-		public Buffer (byte[] data) : base(IntPtr.Zero)
+		public Buffer (byte[] data) : base(gst_buffer_new_wrapped (
+			copy_data (data),(uint)data.Length))
 		{
-			IntPtr ptr = IntPtr.Zero;
-			Marshal.Copy(data,0,ptr,data.Length);
-			Handle = MiniObject.gst_mini_object_ref (gst_buffer_new_wrapped (ptr,(uint)data.Length));
+
 		}
 
 		public int IndexOf(Memory m){

@@ -48,7 +48,7 @@ namespace Gst
 				return gst_pipeline_get_delay (Handle);
 			}
 			set {
-				gst_pipeline_set_delay (Handle);
+				gst_pipeline_set_delay (Handle, value);
 			}
 		}
 	}

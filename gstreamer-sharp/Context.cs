@@ -12,16 +12,12 @@ namespace Gst
 		[DllImport(Application.Dll)]
 		static extern IntPtr gst_context_writable_structure (IntPtr context);
 
-		~Context(){
-			MiniObject.gst_mini_object_unref (Handle);
-		}
-
 		public Context (IntPtr raw) : base(raw)
 		{
 		}
 
 		public Context()
-			: this(MiniObject.gst_mini_object_ref (gst_context_new ()))
+			: this(gst_context_new ())
 		{
 		}
 

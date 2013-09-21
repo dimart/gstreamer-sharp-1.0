@@ -1,5 +1,0 @@
-/home/yannick/gstreamer-sharp-1.0/gstreamer-sharp/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
-/home/yannick/gstreamer-sharp-1.0/gstreamer-sharp/bin/Debug/gstreamer-sharp.dll.mdb
-/home/yannick/gstreamer-sharp-1.0/gstreamer-sharp/bin/Debug/gstreamer-sharp.dll
-/home/yannick/gstreamer-sharp-1.0/gstreamer-sharp/obj/Debug/gstreamer-sharp.dll
-/home/yannick/gstreamer-sharp-1.0/gstreamer-sharp/obj/Debug/gstreamer-sharp.dll.mdb

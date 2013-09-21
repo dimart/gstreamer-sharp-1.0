@@ -37,41 +37,45 @@ all: $(ASSEMBLY) $(PROGRAMFILES) make-glue
 
 FILES = \
 	AssemblyInfo.cs \
-	Application.cs \
-	Manager.cs \
-	Object.cs \
-	Bus.cs \
-	Element.cs \
-	Message.cs \
-	Structure.cs \
-	MiniObject.cs \
-	MessageHandler.cs \
-	ElementFactory.cs \
-	GstSharp/BusFunc.cs \
-	Video/Overlay.cs \
-	BasePlugins/PlaySink.cs \
-	FakeObject.cs \
 	Allocator.cs \
+	Application.cs \
 	Bin.cs \
 	Buffer.cs \
-	Memory.cs \
-	State.cs \
-	Pad.cs \
+	BufferList.cs \
+	Bus.cs \
 	Caps.cs \
-	PadHandler.cs \
-	Clock.cs \
-	Audio/StreamVolume.cs \
-	ChildProxy.cs \
-	MapInfo.cs \
-	BasePlugins/PlayBin.cs \
-	Video/ColorBalance.cs \
-	Pipeline.cs \
 	CapsHandler.cs \
-	Sample.cs \
-	Query.cs \
-	TagSetter.cs \
+	ChildProxy.cs \
+	Clock.cs \
+	Context.cs \
+	Element.cs \
+	ElementFactory.cs \
+	Format.cs \
 	Iterator.cs \
-	Utils.cs 
+	Manager.cs \
+	MapInfo.cs \
+	Memory.cs \
+	Message.cs \
+	MessageHandler.cs \
+	MiniObject.cs \
+	Object.cs \
+	Pad.cs \
+	PadHandler.cs \
+	Pipeline.cs \
+	Query.cs \
+	Sample.cs \
+	State.cs \
+	Structure.cs \
+	TagSetter.cs \
+	Utils.cs \
+	Audio/StreamVolume.cs \
+	Base/Adapter.cs \
+	Base/BaseSrc.cs \
+	BasePlugins/PlayBin.cs \
+	BasePlugins/PlaySink.cs \
+	GstSharp/BusFunc.cs \
+	Video/ColorBalance.cs \
+	Video/Overlay.cs
 
 DATA_FILES = 
 
@@ -89,7 +93,7 @@ REFERENCES =  \
 
 DLL_REFERENCES = 
 
-CLEANFILES = $(PROGRAMFILES) *.o libgstglue-1.0.so
+CLEANFILES = $(PROGRAMFILES) *.o libgstglue-1.0.so bin/Debug/*
 
 distclean-local: 
 	rm -rf obj
@@ -102,4 +106,4 @@ make-glue:
 	&& gcc -shared -Wl,-soname,libgstglue-1.0.so -o libgstglue-1.0.so *.o `pkg-config --cflags --libs gstreamer-base-1.0`
 
 $(ASSEMBLY): $(FILES)
-	$(CSC) $(ASSEMBLY_COMPILER_FLAGS) -out:$(ASSEMBLY) -target:$(COMPILE_TARGET) -r:System.Core -pkg:glib-sharp-2.0 $(FILES)
+	$(CSC) $(ASSEMBLY_COMPILER_FLAGS) -out:$(ASSEMBLY) -target:$(COMPILE_TARGET) -r:System.Core -pkg:glib-sharp-3.0 $(FILES)
