@@ -3,13 +3,33 @@ using System.Runtime.InteropServices;
 
 namespace Gst
 {
-	public class ElementFactory
+	public class ElementFactory : GLib.Opaque
 	{
 		[DllImport(Application.Dll)]
 		static extern IntPtr gst_element_factory_get_type ();
 
 		[DllImport(Application.Dll)]
 		static extern IntPtr gst_element_factory_make(IntPtr factory_name, IntPtr name);
+		[DllImport(Application.Dll)]
+		static extern IntPtr gst_element_factory_find (IntPtr name);
+		[DllImport(Application.Dll)]
+		static extern IntPtr gst_element_factory_create (IntPtr factory, IntPtr name);
+
+		public ElementFactory (IntPtr raw) : base(raw)
+		{}
+
+		public static ElementFactory Find (string name){
+			return new ElementFactory (gst_element_factory_find (
+				Marshal.StringToHGlobalAuto (name)));
+		}
+		public Element Create(string name){
+			return new Element (gst_element_factory_create (
+				Handle,
+				Marshal.StringToHGlobalAuto (name)));
+		}
+		public Element Create(){
+			return Create (null);
+		}
 
 		public static GLib.GType GType {
 			get{

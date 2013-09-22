@@ -81,6 +81,7 @@
     <Compile Include="Segment.cs" />
     <Compile Include="BufferPool.cs" />
     <Compile Include="CapsFeatures.cs" />
+    <Compile Include="Plugin.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

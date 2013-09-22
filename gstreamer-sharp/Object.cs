@@ -4,6 +4,22 @@ using GLib;
 
 namespace Gst
 {
+	public delegate void DeepNotifyHandler();
+
+	public class DeepNotifyArgs : GLib.SignalArgs
+	{
+		public Gst.Object Orig {
+			get {
+				return (Gst.Object)base.Args[0];
+			}
+		}
+		public GLib.ParamSpec Spec {
+			get {
+				return (GLib.ParamSpec)base.Args[1];
+			}
+		}
+	}
+
 	public class Object : GLib.InitiallyUnowned
 	{
 		[DllImport(Application.Dll)]
@@ -75,6 +91,16 @@ namespace Gst
 
 				base.SetProperty (name,val);
 				val.Dispose ();
+			}
+		}
+
+		[GLib.Signal("deep-notify")]
+		public event DeepNotifyHandler DeepNotify{
+			add {
+				base.AddSignalHandler ("deep-notify",value,typeof(DeepNotifyArgs));
+			}
+			remove {
+ 				base.RemoveSignalHandler ("deep-notify", value);
 			}
 		}
 	}

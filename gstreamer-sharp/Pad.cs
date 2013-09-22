@@ -64,6 +64,26 @@ namespace Gst
 			get { return gst_pad_is_active (Handle); }
 			set { gst_pad_set_active (Handle, value); }
 		}
+
+		[GLib.Signal("linked")]
+		public event PadHandler Linked {
+			add{
+				base.AddSignalHandler ("linked",value,typeof(PadHandlerArgs));
+			}
+			remove{
+				base.RemoveSignalHandler ("linked", value);
+			}
+		}
+
+		[GLib.Signal("unlinked")]
+		public event PadHandler Unlinked {
+			add{
+				base.AddSignalHandler ("unlinked",value,typeof(PadHandlerArgs));
+			}
+			remove{
+				base.RemoveSignalHandler ("unlinked", value);
+			}
+		}
 	}
 }
 

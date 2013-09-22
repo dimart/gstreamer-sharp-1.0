@@ -44,6 +44,8 @@ namespace Gst
 		static extern IntPtr gst_message_get_type();
 
 		[DllImport(Application.Dll)]
+		static extern IntPtr gst_message_new_custom (MessageType type, IntPtr src, IntPtr structure);
+		[DllImport(Application.Dll)]
 		static extern IntPtr gst_message_get_structure(IntPtr message);
 
 		[DllImport(Application.GlueDll)]
@@ -53,6 +55,10 @@ namespace Gst
 		public Message (IntPtr raw) : base(raw)
 		{
 			
+		}
+		public Message(MessageType type, Gst.Object src, Structure structure)
+			: this(gst_message_new_custom (type, src.Handle, structure.Handle))
+		{
 		}
 
 		public unsafe Gst.Object Src {

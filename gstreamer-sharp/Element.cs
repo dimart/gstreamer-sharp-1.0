@@ -83,6 +83,10 @@ namespace Gst
 		                            Int64 position);
 		[DllImport(Application.Dll)]
 		static extern bool gst_element_query (IntPtr element, IntPtr query);
+		[DllImport(Application.Dll)]
+		static extern IntPtr gst_element_get_factory (IntPtr element);
+		[DllImport(Application.Dll)]
+		static extern bool gst_element_post_message (IntPtr element, IntPtr message);
 
 		public Element (IntPtr raw) : base(raw)
 		{
@@ -115,6 +119,18 @@ namespace Gst
 			get{return new Gst.Bus(gst_element_get_bus (Raw));}
 			set{gst_element_set_bus (Raw,value.Handle);}
 		}
+
+		public Iterator Pads {
+			get{
+				return new Iterator(gst_element_iterate_pads (Handle));
+			}
+		}
+		public ElementFactory Factory {
+			get {
+				return new ElementFactory (gst_element_get_factory (Handle));
+			}
+		}
+
 		public bool Link (Element element){
 			return gst_element_link (Handle, element.Handle);
 		}
@@ -155,11 +171,8 @@ namespace Gst
 		public bool Query(Gst.Query query){
 			return gst_element_query (Handle,query.Handle);
 		}
-
-		public Iterator Pads {
-			get{
-				return new Iterator(gst_element_iterate_pads (Handle));
-			}
+		public bool PostMessage(Message message){
+			return gst_element_post_message (Handle, message.Handle);
 		}
 
 		[GLib.Signal("pad-added")]

@@ -89,6 +89,17 @@ namespace Gst
 				base.RemoveSignalHandler ("element-removed", value);
 			}
 		}
+
+		[GLib.Signal("do-latency")]
+		public event EventHandler DoLatency
+		{
+			add {
+				base.AddSignalHandler ("do-latency",value);
+			}
+			remove {
+				base.RemoveSignalHandler ("do-latency", value);
+			}
+		}
 	}
 }
 
