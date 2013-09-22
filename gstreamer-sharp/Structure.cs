@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Gst
 {
-	public delegate void StructureForeachFunc(string fieldname, object val);
+	public delegate void StructureForeachFunc(string fieldname, GLib.Value val);
 
 	public class Structure : GLib.Opaque, ICloneable
 	{
@@ -120,9 +120,9 @@ namespace Gst
 			return Marshal.PtrToStringAuto (gst_structure_to_string (Handle));
 		}
 
-		public object this [string fieldname] {
+		public GLib.Value this [string fieldname] {
 			set {
- 				GLib.Value val = new GLib.Value (value);
+				GLib.Value val = value;
 				gst_structure_set_value (Handle, 
 				                         Marshal.StringToHGlobalAuto (fieldname),
 				                         ref val);
@@ -130,7 +130,8 @@ namespace Gst
 			get {
 				IntPtr s = Marshal.StringToHGlobalAuto (fieldname);
 				IntPtr val = gst_structure_get_value(Handle,s);
-				return new GLib.Value(val).Val;
+				GLib.Value v = (GLib.Value)Marshal.PtrToStructure(val,typeof(GLib.Value));
+				return v;
 			}
 		}
 

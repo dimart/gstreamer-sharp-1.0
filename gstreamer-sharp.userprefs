@@ -1,20 +1,19 @@
 ﻿<Properties GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="gstreamer-sharp/Segment.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="gstreamer-sharp/MapInfo.cs">
     <Files>
-      <File FileName="../../../../usr/include/gstreamer-1.0/gst/gstbufferlist.h" Line="1" Column="1" />
-      <File FileName="gstreamer-sharp/BufferList.cs" Line="1" Column="1" />
-      <File FileName="gstreamer-sharp/Element.cs" Line="1" Column="1" />
-      <File FileName="../../../../usr/include/gstreamer-1.0/gst/gstutils.h" Line="876" Column="36" />
-      <File FileName="../../../../usr/include/gstreamer-1.0/gst/gstsegment.h" Line="186" Column="30" />
-      <File FileName="gstreamer-sharp/Segment.cs" Line="41" Column="54" />
+      <File FileName="gstreamer-sharp/Structure.cs" Line="134" Column="14" />
+      <File FileName="gstreamer-sharp/Memory.cs" Line="17" Column="29" />
+      <File FileName="gstreamer-sharp/MapInfo.cs" Line="35" Column="1" />
+      <File FileName="../../../../usr/include/gstreamer-1.0/gst/gstmemory.h" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="gstreamer-sharp" expanded="True">
             <Node name="References" expanded="True" />
-            <Node name="Segment.cs" selected="True" />
+            <Node name="BasePlugins" expanded="True" />
+            <Node name="MapInfo.cs" selected="True" />
           </Node>
         </State>
       </Pad>

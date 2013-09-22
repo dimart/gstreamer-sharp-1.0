@@ -42,8 +42,10 @@ FILES = \
 	Bin.cs \
 	Buffer.cs \
 	BufferList.cs \
+	BufferPool.cs \
 	Bus.cs \
 	Caps.cs \
+	CapsFeatures.cs \
 	CapsHandler.cs \
 	ChildProxy.cs \
 	Clock.cs \

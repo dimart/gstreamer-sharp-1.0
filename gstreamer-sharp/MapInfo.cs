@@ -23,7 +23,7 @@ namespace Gst
 		[StructLayout(LayoutKind.Sequential)]
 		public struct GstMapInfo{
 			public IntPtr memory;
-			public int flags;
+			public MapFlags flags;
 			public IntPtr data;
 			public long size;
 			public long maxsize;
@@ -31,32 +31,29 @@ namespace Gst
 			IntPtr _gst_reserved;
 		}
 
-		IntPtr ptr;
+		GstMapInfo info;
 
-		public MapInfo (IntPtr raw)
+		public MapInfo (GstMapInfo raw)
 		{
-			ptr = raw;
+			info = raw;
 		}
 
 		public MapFlags Flags {
 			get{
-				GstMapInfo info = (GstMapInfo)Marshal.PtrToStructure (ptr,typeof(GstMapInfo));
-				return (MapFlags)info.flags;
+				return info.flags;
 			}
 		}
 
 		public byte[] Data {
 			get{
-				GstMapInfo info = (GstMapInfo)Marshal.PtrToStructure (ptr,typeof(GstMapInfo));
-				Console.WriteLine (info.size);
-//			Marshal.Copy (info.data,data,0,(int)info.size);
-				return new byte[]{1};
+				byte[] data = new byte[info.size];
+				Marshal.Copy (info.data,data,0,(int)info.size);
+				return data;
 			}
 		}
 
 		public long MaxSize {
 			get{
-				GstMapInfo info = (GstMapInfo)Marshal.PtrToStructure (ptr,typeof(GstMapInfo));
 				return info.maxsize;
 			}
 		}

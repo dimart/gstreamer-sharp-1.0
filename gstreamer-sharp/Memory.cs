@@ -17,7 +17,7 @@ namespace Gst
 		delegate bool GstMemoryIsSpanFunction(IntPtr memory, IntPtr o, out  long offset);
 
 		[DllImport(Application.Dll)]
-		static extern bool gst_memory_map (IntPtr memory, out MapInfo.GstMapInfo info, int flags);
+		static extern bool gst_memory_map (IntPtr memory, out MapInfo.GstMapInfo info, MapFlags flags);
 
 		[StructLayout(LayoutKind.Sequential)]
 		struct GstAllocator
@@ -98,8 +98,11 @@ namespace Gst
 			}
 		}
 
-		public void Map(MapFlags flags){
-			Gst.Allocator a = this.Allocator;
+		public bool Map(out MapInfo info, MapFlags flags){
+			MapInfo.GstMapInfo ptr;
+			bool b = gst_memory_map (Handle, out ptr, flags);
+			info = new MapInfo (ptr);
+			return b;
 		}
 	}
 }

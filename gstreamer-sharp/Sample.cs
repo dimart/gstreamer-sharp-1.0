@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Gst
 {
-	public class Sample : GLib.Opaque
+	public class Sample : MiniObject
 	{
 		[DllImport(Application.Dll)]
 		static extern IntPtr gst_sample_new(IntPtr buffer, IntPtr caps, 

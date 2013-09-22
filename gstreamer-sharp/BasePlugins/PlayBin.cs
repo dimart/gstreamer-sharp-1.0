@@ -8,6 +8,9 @@ namespace Gst.BasePlugins
 {
 	public class PlayBin : Pipeline, ChildProxy, StreamVolume, Overlay, ColorBalance
 	{
+		[DllImport(Application.GlueDll)]
+		static extern IntPtr gstsharp_element_convert_sample (IntPtr element, IntPtr caps);
+
 		[DllImport(Application.Dll)]
 		static extern IntPtr gst_element_factory_make (IntPtr element, IntPtr name);
 
@@ -137,7 +140,7 @@ namespace Gst.BasePlugins
 		}
 
 		public Sample ConvertSample(Caps caps){
-			return (Sample)GLib.Signal.Emit(this,"convert-sample",new object[]{caps});
+			return new Sample (gstsharp_element_convert_sample (Handle, caps.Handle));
 		}
 
 		[GLib.Signal("about-to-finish")]
