@@ -32,6 +32,10 @@ namespace Gst
 		static extern uint gst_bus_add_watch (IntPtr bus, BusFuncNative native, IntPtr data);
 
 		[DllImport(Application.Dll)]
+		static extern uint gst_bus_add_watch_full (IntPtr bus, int priority, BusFuncNative native,
+		                           IntPtr data, GLib.DestroyNotify notify);
+
+		[DllImport(Application.Dll)]
 		static extern void gst_bus_add_signal_watch (IntPtr bus);
 
 		[DllImport(Application.Dll)]
@@ -93,6 +97,12 @@ namespace Gst
 			BusFuncWrapper wrapper = new BusFuncWrapper(func);
 			IntPtr data = (IntPtr)GCHandle.Alloc (wrapper);
 			return gst_bus_add_watch (Handle,wrapper.native,data);
+		}
+		public uint AddWatch (int priority, BusFunc func){
+			BusFuncWrapper wrapper = new BusFuncWrapper(func);
+			IntPtr data = (IntPtr)GCHandle.Alloc (wrapper);
+			DestroyNotify notify = DestroyHelper.NotifyHandler;
+			return gst_bus_add_watch_full (Handle, priority, wrapper.native, data, notify);
 		}
 
 		public void AddSignalWatch(){

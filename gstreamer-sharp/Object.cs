@@ -45,6 +45,10 @@ namespace Gst
 
 		[DllImport(Application.Dll)]
 		static extern bool gst_object_has_ancestor(IntPtr obj, IntPtr ancestor);
+		[DllImport(Application.Dll)]
+		static extern IntPtr gst_object_ref (IntPtr obj);
+		[DllImport(Application.Dll)]
+		static extern void gst_object_unref (IntPtr obj);
 
 		public Object () : base(IntPtr.Zero)
 		{

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace Gst.Base
@@ -59,8 +60,17 @@ namespace Gst.Base
 		public Buffer TakeBuffer(UInt32 size){
 			return new Buffer (gst_adapter_take_buffer(Handle,size));
 		}
+		/*
 		public GLib.List TakeList(UInt32 size){
 			return new GLib.List (gst_adapter_take_list (Handle, size));
+		}
+		*/
+		public List<Buffer> TakeList(uint size) {
+			GLib.List l = new GLib.List (gst_adapter_take_list (Handle, size));
+			List<Buffer> list = new List<Buffer> ();
+			for (var i = 0; i < l.Count; i++)
+				list.Add ((Buffer)l[i]);
+			return list;
 		}
 	}
 }

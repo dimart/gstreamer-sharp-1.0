@@ -20,7 +20,9 @@ namespace Gst
 		[DllImport(Application.Dll)]
 		static extern IntPtr gst_caps_new_empty();
 		[DllImport(Application.Dll)]
-		static extern IntPtr gst_caps_from_string([MarshalAs(UnmanagedType.LPStr)]string str);
+		static extern IntPtr gst_caps_new_empty_simple (IntPtr mtype);
+		[DllImport(Application.Dll)]
+		static extern IntPtr gst_caps_from_string(IntPtr str);
 		[DllImport(Application.Dll)]
 		static extern IntPtr gst_caps_to_string (IntPtr caps);
 		[DllImport(Application.Dll)]
@@ -52,11 +54,18 @@ namespace Gst
 		{
 		}
 
-		public Caps(){
-			Handle = gst_caps_new_empty ();
+		public Caps() : base(gst_caps_new_empty ())
+		{
+
 		}
-		public Caps(string caps_string){
-			Handle = gst_caps_from_string (caps_string);
+		public Caps(string mtype)
+			: base(gst_caps_new_empty_simple (Marshal.StringToHGlobalAuto (mtype)))
+		{
+
+		}
+
+		public static Caps FromString(string val){
+			return new Caps (gst_caps_from_string (Marshal.StringToHGlobalAuto (val)));
 		}
 
 		public Structure this [uint index] {
@@ -99,6 +108,10 @@ namespace Gst
 			gst_caps_set_features (Handle, index, features.Handle);
 		}
 		public void SetValue (string name, GLib.Value val){
+			gst_caps_set_value (Handle, Marshal.StringToHGlobalAuto (name), ref val);
+		}
+		public void SetValue (string name, object o){
+			GLib.Value val = new GLib.Value (o);
 			gst_caps_set_value (Handle, Marshal.StringToHGlobalAuto (name), ref val);
 		}
 

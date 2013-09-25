@@ -9,6 +9,8 @@ namespace Gst.BasePlugins
 	public class PlayBin : Pipeline, ChildProxy, StreamVolume, Overlay, ColorBalance
 	{
 		[DllImport(Application.GlueDll)]
+		static extern IntPtr gstsharp_element_convert_sample2 (IntPtr element, IntPtr caps);
+		[DllImport(Application.GlueDll)]
 		static extern IntPtr gstsharp_element_convert_sample (IntPtr element, IntPtr caps);
 
 		[DllImport(Application.Dll)]
@@ -43,11 +45,15 @@ namespace Gst.BasePlugins
 		[DllImport(Application.VideoDll)]
 		static extern void gst_color_balance_set_value(IntPtr o, IntPtr channel, int val);
 
-		public PlayBin (string name) : base(name)
+		public PlayBin (IntPtr raw) : base(raw)
 		{
-			IntPtr n = Marshal.StringToHGlobalAuto (name);
-			IntPtr p = Marshal.StringToHGlobalAuto ("playbin");
-			Raw = gst_element_factory_make (p,n);
+		}
+
+		public PlayBin (string name) : base(
+			gst_element_factory_make (Marshal.StringToHGlobalAuto ("playbin"),
+		                          Marshal.StringToHGlobalAuto (name))
+			)
+		{
 		}
 
 		public PlayBin() : this(null)
@@ -139,8 +145,20 @@ namespace Gst.BasePlugins
 			set{this["uri"] = value;}
 		}
 
+		
+		[DllImport("gobject-2.0")]
+		static extern void g_signal_emit_by_name(IntPtr instance, IntPtr signal_name, 
+		                                         IntPtr val, out IntPtr res);
+		
 		public Sample ConvertSample(Caps caps){
-			return new Sample (gstsharp_element_convert_sample (Handle, caps.Handle));
+			IntPtr name = Marshal.StringToHGlobalAuto ("convert-sample");
+			IntPtr res;
+			g_signal_emit_by_name (Handle, name, caps.Handle, out res);
+			return new Sample (res);
+		}
+		public Sample ConvertSampleString(string caps){
+			return new Sample (gstsharp_element_convert_sample2 (Handle, 
+			                                                     Marshal.StringToHGlobalAuto (caps)));
 		}
 
 		[GLib.Signal("about-to-finish")]

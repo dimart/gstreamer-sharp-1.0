@@ -82,6 +82,13 @@
     <Compile Include="BufferPool.cs" />
     <Compile Include="CapsFeatures.cs" />
     <Compile Include="Plugin.cs" />
+    <Compile Include="Task.cs" />
+    <Compile Include="GstSharp\TaskFunc.cs" />
+    <Compile Include="TaskPool.cs" />
+    <Compile Include="CorePlugins\FileSrc.cs" />
+    <Compile Include="Event.cs" />
+    <Compile Include="Base\PushSrc.cs" />
+    <Compile Include="CorePlugins\FdSrc.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -90,5 +97,6 @@
     <Folder Include="BasePlugins\" />
     <Folder Include="Audio\" />
     <Folder Include="Base\" />
+    <Folder Include="CorePlugins\" />
   </ItemGroup>
 </Project>

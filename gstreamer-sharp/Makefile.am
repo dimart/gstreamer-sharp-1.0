@@ -52,6 +52,7 @@ FILES = \
 	Context.cs \
 	Element.cs \
 	ElementFactory.cs \
+	Event.cs \
 	Format.cs \
 	Iterator.cs \
 	Manager.cs \
@@ -70,13 +71,17 @@ FILES = \
 	State.cs \
 	Structure.cs \
 	TagSetter.cs \
+	Task.cs \
+	TaskPool.cs \
 	Utils.cs \
 	Audio/StreamVolume.cs \
 	Base/Adapter.cs \
 	Base/BaseSrc.cs \
 	BasePlugins/PlayBin.cs \
 	BasePlugins/PlaySink.cs \
+	CorePlugins/FileSrc.cs \
 	GstSharp/BusFunc.cs \
+	GstSharp/TaskFunc.cs \
 	Video/ColorBalance.cs \
 	Video/Overlay.cs
 

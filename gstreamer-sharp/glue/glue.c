@@ -6,6 +6,8 @@ gstsharp_g_type_from_instance (GTypeInstance * instance);
 GstObject *gst_message_get_src(GstMessage *message);
 GstSample *
 gstsharp_element_convert_sample(GstElement *element, GstCaps *caps);
+GstSample *
+gstsharp_element_convert_sample2(GstElement *element, gchar *caps_str);
 guint
 gstsharp_gst_message_get_src_offset (void);
 GType *
@@ -37,7 +39,19 @@ gstsharp_memory_get_info(GstMemory *memory, GstMapFlags flags){
 GstSample *
 gstsharp_element_convert_sample(GstElement *element, GstCaps *caps){
 	GstSample* sample = NULL;
-	g_signal_emit_by_name(element, "convert-sample", caps, &sample, NULL);
+	g_return_val_if_fail (element != NULL, NULL);
+	g_return_val_if_fail (caps != NULL, NULL);
+	g_signal_emit_by_name (element, "convert-sample", caps, &sample, NULL);
+	g_return_val_if_fail (sample != NULL, NULL);
+	return sample;
+}
+
+GstSample *
+gstsharp_element_convert_sample2(GstElement *element, gchar *caps_str){
+	GstSample* sample = NULL;
+	g_return_val_if_fail (element != NULL, NULL);
+	GstCaps *caps = gst_caps_from_string (caps_str);
+	g_signal_emit_by_name (element, "convert-sample", caps, &sample, NULL);
 	return sample;
 }
 

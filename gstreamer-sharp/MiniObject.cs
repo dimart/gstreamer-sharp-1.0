@@ -10,6 +10,15 @@ namespace Gst
 		LockReadOnly = 1 << 1,
 		Last         = 1 << 4
 	}
+	[Flags]
+	public enum LockFlags
+	{
+		Read = 1 << 0,
+		Write = 1 << 1,
+		Exclusive = 1 << 2,
+		Last = 1 << 8,
+		ReadWrite = LockFlags.Read | LockFlags.Write
+	}
 
 	public class MiniObject : IDisposable, GLib.IWrapper
 	{
@@ -46,6 +55,14 @@ namespace Gst
 		static extern void gst_mini_object_take (ref IntPtr obj, IntPtr newobj);
 		[DllImport(Application.GlueDll)]
 		static extern IntPtr gstsharp_g_type_from_instance (IntPtr instance);
+		[DllImport(Application.Dll)]
+		static extern bool gst_mini_object_lock (IntPtr o, LockFlags flags);
+		[DllImport(Application.Dll)]
+		static extern void gst_mini_object_unlock (IntPtr o, LockFlags flags);
+		[DllImport(Application.Dll)]
+		static extern bool gst_mini_object_is_writable (IntPtr o);
+		[DllImport(Application.Dll)]
+		static extern void gst_mini_object_make_writable (IntPtr o, bool writable);
 
 		IntPtr handle;
 
@@ -87,6 +104,18 @@ namespace Gst
 		public IntPtr Handle {
 			get{ return handle;}
 			internal set{handle = value;}
+		}
+
+		public bool Writable {
+			get { return gst_mini_object_is_writable (handle); }
+			set { gst_mini_object_make_writable (handle, value); }
+		}
+
+		public bool Lock(LockFlags flags){
+			return gst_mini_object_lock (handle, flags);
+		}
+		public void Unlock(LockFlags flags){
+			gst_mini_object_unlock (handle, flags);
 		}
 
 		public void Dispose(){
