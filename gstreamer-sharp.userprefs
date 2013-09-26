@@ -1,29 +1,17 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="gstreamer-sharp/CorePlugins/FileSink.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="gstreamer-sharp\Application.cs">
     <Files>
-      <File FileName="gstreamer-sharp/Base/BaseSrc.cs" Line="138" Column="25" />
-      <File FileName="gstreamer-sharp/Base/BaseSink.cs" Line="214" Column="4" />
-      <File FileName="gstreamer-sharp/Clock.cs" Line="42" Column="6" />
-      <File FileName="gstreamer-sharp/CorePlugins/FileSrc.cs" Line="14" Column="4" />
-      <File FileName="gstreamer-sharp/CorePlugins/FileSink.cs" Line="23" Column="57" />
-      <File FileName="../../toto/toto/Program.cs" Line="16" Column="28" />
+      <File FileName="gstreamer-sharp\GLib\Argv.cs" Line="1" Column="1" />
+      <File FileName="D:\gstreamer\1.0\x86\include\gstreamer-1.0\gst\gst.h" Line="1" Column="1" />
+      <File FileName="gstreamer-sharp\Application.cs" Line="10" Column="56" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="gstreamer-sharp" expanded="True">
             <Node name="References" expanded="True" />
-            <Node name="Audio" expanded="True" />
-            <Node name="Base" expanded="True" />
-            <Node name="BasePlugins" expanded="True" />
-            <Node name="CorePlugins" expanded="True">
-              <Node name="FileSink.cs" selected="True" />
-            </Node>
-            <Node name="GstSharp" expanded="True" />
-          </Node>
-          <Node name="toto" expanded="True">
-            <Node name="References" expanded="True" />
+            <Node name="GLib" expanded="True" />
           </Node>
         </State>
       </Pad>

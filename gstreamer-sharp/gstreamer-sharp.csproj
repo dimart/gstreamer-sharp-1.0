@@ -32,10 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="glib-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
-      <Private>False</Private>
-      <Package>glib-sharp-3.0</Package>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -94,6 +90,58 @@
     <Compile Include="Base\BaseSink.cs" />
     <Compile Include="CorePlugins\FdSink.cs" />
     <Compile Include="CorePlugins\FileSink.cs" />
+    <Compile Include="GLib\Argv.cs" />
+    <Compile Include="GLib\ConnectBeforeAttribute.cs" />
+    <Compile Include="GLib\DefaultSignalHandlerAttribute.cs" />
+    <Compile Include="GLib\DestroyNotify.cs" />
+    <Compile Include="GLib\ExceptionManager.cs" />
+    <Compile Include="GLib\FileUtils.cs" />
+    <Compile Include="GLib\GException.cs" />
+    <Compile Include="GLib\GInterfaceAdapter.cs" />
+    <Compile Include="GLib\GInterfaceAttribute.cs" />
+    <Compile Include="GLib\GLibSynchronizationContext.cs" />
+    <Compile Include="GLib\Global.cs" />
+    <Compile Include="GLib\GString.cs" />
+    <Compile Include="GLib\GType.cs" />
+    <Compile Include="GLib\GTypeAttribute.cs" />
+    <Compile Include="GLib\Idle.cs" />
+    <Compile Include="GLib\InitiallyUnowned.cs" />
+    <Compile Include="GLib\IOChannel.cs" />
+    <Compile Include="GLib\IWrapper.cs" />
+    <Compile Include="GLib\KeyFile.cs" />
+    <Compile Include="GLib\List.cs" />
+    <Compile Include="GLib\ListBase.cs" />
+    <Compile Include="GLib\Log.cs" />
+    <Compile Include="GLib\MainContext.cs" />
+    <Compile Include="GLib\MainLoop.cs" />
+    <Compile Include="GLib\ManagedValue.cs" />
+    <Compile Include="GLib\Markup.cs" />
+    <Compile Include="GLib\Marshaller.cs" />
+    <Compile Include="GLib\MissingIntPtrCtorException.cs" />
+    <Compile Include="GLib\NotifyHandler.cs" />
+    <Compile Include="GLib\Object.cs" />
+    <Compile Include="GLib\ObjectManager.cs" />
+    <Compile Include="GLib\Opaque.cs" />
+    <Compile Include="GLib\ParamSpec.cs" />
+    <Compile Include="GLib\Priority.cs" />
+    <Compile Include="GLib\PropertyAttribute.cs" />
+    <Compile Include="GLib\PtrArray.cs" />
+    <Compile Include="GLib\Signal.cs" />
+    <Compile Include="GLib\SignalArgs.cs" />
+    <Compile Include="GLib\SignalAttribute.cs" />
+    <Compile Include="GLib\SignalClosure.cs" />
+    <Compile Include="GLib\SList.cs" />
+    <Compile Include="GLib\Source.cs" />
+    <Compile Include="GLib\Spawn.cs" />
+    <Compile Include="GLib\Thread.cs" />
+    <Compile Include="GLib\Timeout.cs" />
+    <Compile Include="GLib\ToggleRef.cs" />
+    <Compile Include="GLib\TypeFundamentals.cs" />
+    <Compile Include="GLib\TypeInitializerAttribute.cs" />
+    <Compile Include="GLib\Value.cs" />
+    <Compile Include="GLib\ValueArray.cs" />
+    <Compile Include="GLib\Variant.cs" />
+    <Compile Include="GLib\VariantType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -103,5 +151,9 @@
     <Folder Include="Audio\" />
     <Folder Include="Base\" />
     <Folder Include="CorePlugins\" />
+    <Folder Include="GLib\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GLib\Makefile.am" />
   </ItemGroup>
 </Project>

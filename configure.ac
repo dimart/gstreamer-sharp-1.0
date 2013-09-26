@@ -6,13 +6,14 @@ AM_INIT_AUTOMAKE([check-news dist-bzip2])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 AC_CONFIG_FILES([Makefile
 		gstreamer-sharp/Makefile
-		gstreamer-sharp-1.0.pc])
+		gstreamer-sharp-1.0.pc
+		gstreamer-sharp/gstreamer-sharp.dll.config])
 
 AM_PROG_AR
 LT_INIT
 AC_PROG_CC
 
-API_VERSION=1.0.6
+API_VERSION=1.0.8
 AC_SUBST(API_VERSION)
 PACKAGE_VERSION=gstreamer-sharp-1.0
 AC_SUBST(PACKAGE_VERSION)
@@ -20,7 +21,6 @@ AC_SUBST(PACKAGE_VERSION)
 MONO_REQUIRED_VERSION=2.4
 AC_SUBST(MONO_REQUIRED_VERSION)
 PKG_CHECK_MODULES(MONO_DEPENDENCY, mono >= $MONO_REQUIRED_VERSION, has_mono=true, has_mono=false)
-PKG_CHECK_MODULES(GLIB_SHARP, glib-sharp-2.0 >= 2.12, have_glibsharp=yes, have_glibsharp=no)
 
 GACUTIL='gacutil'
 
@@ -48,7 +48,7 @@ else
 	fi
 fi
 
-GSTREAMER_REQUIRED_VERSION=1.0.6
+GSTREAMER_REQUIRED_VERSION=1.0.8
 PKG_CHECK_MODULES(GST,
 	gstreamer-1.0 >= $GSTREAMER_REQUIRED_VERSION)
 	

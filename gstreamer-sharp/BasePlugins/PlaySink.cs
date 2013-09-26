@@ -7,7 +7,7 @@ namespace Gst.BasePlugins
 {
 	public class PlaySink : Element, Gst.Video.Overlay, Gst.Audio.StreamVolume
 	{
-		[DllImport ("gobject-2.0")]
+		[DllImport ("libgobject-2.0-0.dll")]
 		private static extern IntPtr g_type_from_name  (IntPtr raw);
 		[DllImport (Application.GlueDll)]
 		private static extern IntPtr gstsharp_g_type_from_instance (IntPtr raw);

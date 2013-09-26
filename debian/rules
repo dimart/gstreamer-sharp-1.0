@@ -10,13 +10,7 @@ override_dh_makeclilibs:
 	dh_makeclilibs -m 1.0.7
 
 override_dh_clideps:
-	dh_clideps --exclude-moduleref=gstreamer-1.0 \
-		--exclude-moduleref=gstvideo-1.0 \
-		--exclude-moduleref=gstaudio-1.0 \
-		--exclude-moduleref=gstbase-1.0 \
-		--exclude-moduleref=gobject-2.0 \
-		--exclude-moduleref=glib-2.0 \
-		--exclude-moduleref=libgstglue-1.0.so
+	dh_clideps --exclude-moduleref=libgstglue-1.0.so
 
 # Disable makeshlibs
 override_dh_makeshlibs:

@@ -6,14 +6,14 @@ namespace Gst
 {
 	public class Application
 	{
-		public const string Dll = "gstreamer-1.0";
-		public const string VideoDll = "gstvideo-1.0";
+		public const string Dll = "libgstreamer-1.0-0.dll";
+		public const string VideoDll = "libgstvideo-1.0-0.dll";
 		public const string GlueDll = "libgstglue-1.0.so";
-		public const string AudioDll = "gstaudio-1.0";
-		public const string BaseDll = "gstbase-1.0";
+		public const string AudioDll = "libgstaudio-1.0-0.dll";
+		public const string BaseDll = "libgstbase-1.0-0.dll";
 
 		[DllImport(Dll)]
-		static extern void gst_init(ref int argc,[MarshalAs(UnmanagedType.LPArray)]ref string[] argv);
+		static extern void gst_init(ref int argc,[MarshalAs(UnmanagedType.SafeArray)]ref string[] argv);
 
 		[DllImport(Dll)]
 		static extern IntPtr gst_version_string();

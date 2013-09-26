@@ -146,7 +146,7 @@ namespace Gst.BasePlugins
 		}
 
 		
-		[DllImport("gobject-2.0")]
+		[DllImport("libgobject-2.0-0.dll")]
 		static extern void g_signal_emit_by_name(IntPtr instance, IntPtr signal_name, 
 		                                         IntPtr val, out IntPtr res);
 		

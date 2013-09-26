@@ -1,7 +1,7 @@
 gstreamer-sharp-1.0
 ===
 
-C# bindings of gstreamer-1.0 (actually 1.0.6)
+C# bindings of gstreamer-1.0 (actually 1.0.8)
 
 how to compile:
   - ./autogen.sh
