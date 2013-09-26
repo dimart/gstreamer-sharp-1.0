@@ -269,7 +269,7 @@ namespace Gst.Base
 		public Gst.PadMode PadMode {
 			get {
 				GstBaseSink sink = (GstBaseSink)Marshal.PtrToStructure (Handle,typeof(GstBaseSink));
-				return sink.pad_mode;
+			    	return sink.pad_mode;
 			}
 		}
 	}
