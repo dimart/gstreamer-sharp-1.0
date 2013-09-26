@@ -125,6 +125,42 @@ namespace Gst
 				return new Iterator(gst_element_iterate_pads (Handle));
 			}
 		}
+		public List<Pad> SrcPads {
+			get {
+				GstElement e = (GstElement)Marshal.PtrToStructure (Handle, typeof(GstElement));
+				GLib.List l = new GLib.List (e.srcpads);
+				List<Pad> list = new List<Pad> ();
+				foreach (object o in l)
+					list.Add ((Pad)o);
+				return list;
+			}
+			set {
+				GLib.List l = new GLib.List (typeof(Pad));
+				foreach (Pad pad in value)
+					l.Append (pad);
+				GstElement e = (GstElement)Marshal.PtrToStructure (Handle, typeof(GstElement));
+				e.srcpads = l.Handle;
+				Marshal.StructureToPtr (e, Raw, false);
+			}
+		}
+		public List<Pad> SinkPads {
+			get {
+				GstElement e = (GstElement)Marshal.PtrToStructure (Handle, typeof(GstElement));
+				GLib.List l = new GLib.List (e.sinkpads);
+				List<Pad> list = new List<Pad> ();
+				foreach (object o in l)
+					list.Add ((Pad)o);
+				return list;
+			}
+			set {
+				GLib.List l = new GLib.List (typeof(Pad));
+				foreach (Pad pad in value)
+					l.Append (pad);
+				GstElement e = (GstElement)Marshal.PtrToStructure (Handle, typeof(GstElement));
+				e.sinkpads = l.Handle;
+				Marshal.StructureToPtr (e, Raw, false);
+			}
+		}
 		public ElementFactory Factory {
 			get {
 				return new ElementFactory (gst_element_get_factory (Handle));

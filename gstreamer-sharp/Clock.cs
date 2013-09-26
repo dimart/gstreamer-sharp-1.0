@@ -37,6 +37,18 @@ namespace Gst
 		}
 	}
 
+	public enum ClockReturn
+	{
+		Ok          =  0,
+		Early       =  1,
+		Unscheduled =  2,
+		Busy        =  3,
+		BadTime     =  4,
+		Error       =  5,
+		Unsupported =  6,
+		Done        =  7
+	}
+
 	public class Clock : Gst.Object
 	{
 		[DllImport(Application.Dll)]

@@ -97,3 +97,80 @@ GstFlowReturn
 gstsharp_pushsrc_fill(GstPushSrc *src, GstBuffer *buf){
 	return GST_PUSH_SRC_GET_CLASS(src)->fill(src, buf);
 }
+
+
+
+
+GstCaps*
+gstsharp_basesink_get_caps (GstBaseSink *sink, GstCaps *filter){
+	return GST_BASE_SINK_GET_CLASS(sink)->get_caps(sink, filter);
+}
+gboolean
+gstsharp_basesink_set_caps (GstBaseSink *sink, GstCaps *caps){
+	return GST_BASE_SINK_GET_CLASS(sink)->set_caps(sink, caps);
+}
+GstCaps*
+gstsharp_basesink_fixate (GstBaseSink *sink, GstCaps *caps){
+	return GST_BASE_SINK_GET_CLASS(sink)->fixate(sink, caps);
+}
+gboolean 
+gstsharp_basesink_activate_pull (GstBaseSink *sink, gboolean active){
+	return GST_BASE_SINK_GET_CLASS(sink)->activate_pull(sink, active);
+}
+void 
+gstsharp_basesink_get_times(GstBaseSink *sink, GstBuffer *buffer,
+                                 GstClockTime *start, GstClockTime *end){
+	GST_BASE_SINK_GET_CLASS (sink)->get_times(sink, buffer, start, end);
+}
+gboolean
+gstsharp_basesink_propose_allocation (GstBaseSink *sink, GstQuery *query){
+	return GST_BASE_SINK_GET_CLASS(sink)->propose_allocation(sink, query);
+}
+gboolean
+gstsharp_basesink_start (GstBaseSink *sink){
+	return GST_BASE_SINK_GET_CLASS (sink)->start(sink);
+}
+gboolean
+gstsharp_basesink_stop (GstBaseSink *sink){
+	return GST_BASE_SINK_GET_CLASS (sink)->stop(sink);
+}
+gboolean
+gstsharp_basesink_unlock (GstBaseSink *sink){
+	return GST_BASE_SINK_GET_CLASS (sink)->unlock(sink);
+}
+gboolean
+gstsharp_basesink_unlock_stop (GstBaseSink *sink){
+	return GST_BASE_SINK_GET_CLASS (sink)->unlock_stop(sink);
+}
+gboolean
+gstsharp_basesink_query (GstBaseSink *sink, GstQuery *query){
+	return GST_BASE_SINK_GET_CLASS(sink)->query(sink, query);
+}
+gboolean
+gstsharp_basesink_event (GstBaseSink *sink, GstEvent *event){
+	return GST_BASE_SINK_GET_CLASS(sink)->event(sink, event);
+}
+GstFlowReturn
+gstsharp_basesink_wait_event (GstBaseSink *sink, GstEvent *event){
+	return GST_BASE_SINK_GET_CLASS(sink)->wait_event(sink, event);
+}
+GstFlowReturn
+gstsharp_basesink_prepare (GstBaseSink *sink, GstBuffer *buffer){
+	return GST_BASE_SINK_GET_CLASS(sink)->prepare(sink, buffer);
+}
+GstFlowReturn
+gstsharp_basesink_prepare_list (GstBaseSink *sink, GstBufferList *list){
+	return GST_BASE_SINK_GET_CLASS(sink)->prepare_list(sink, list);
+}
+GstFlowReturn
+gstsharp_basesink_preroll (GstBaseSink *sink, GstBuffer *buffer){
+	return GST_BASE_SINK_GET_CLASS(sink)->preroll(sink, buffer);
+}
+GstFlowReturn
+gstsharp_basesink_render (GstBaseSink *sink, GstBuffer *buffer){
+	return GST_BASE_SINK_GET_CLASS(sink)->render(sink, buffer);
+}
+GstFlowReturn
+gstsharp_basesink_render_list (GstBaseSink *sink, GstBufferList *list){
+	return GST_BASE_SINK_GET_CLASS(sink)->render_list(sink, list);
+}

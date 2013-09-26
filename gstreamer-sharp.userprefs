@@ -1,18 +1,26 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="gstreamer-sharp/Object.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="gstreamer-sharp/CorePlugins/FileSink.cs">
     <Files>
-      <File FileName="../../toto/toto/Program.cs" Line="3" Column="7" />
-      <File FileName="gstreamer-sharp/BasePlugins/PlayBin.cs" Line="1" Column="1" />
-      <File FileName="gstreamer-sharp/Sample.cs" Line="1" Column="1" />
-      <File FileName="gstreamer-sharp/Object.cs" Line="57" Column="37" />
+      <File FileName="gstreamer-sharp/Base/BaseSrc.cs" Line="138" Column="25" />
+      <File FileName="gstreamer-sharp/Base/BaseSink.cs" Line="214" Column="4" />
+      <File FileName="gstreamer-sharp/Clock.cs" Line="42" Column="6" />
+      <File FileName="gstreamer-sharp/CorePlugins/FileSrc.cs" Line="14" Column="4" />
+      <File FileName="gstreamer-sharp/CorePlugins/FileSink.cs" Line="23" Column="57" />
+      <File FileName="../../toto/toto/Program.cs" Line="16" Column="28" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="gstreamer-sharp" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="Audio" expanded="True" />
+            <Node name="Base" expanded="True" />
             <Node name="BasePlugins" expanded="True" />
-            <Node name="Object.cs" selected="True" />
+            <Node name="CorePlugins" expanded="True">
+              <Node name="FileSink.cs" selected="True" />
+            </Node>
+            <Node name="GstSharp" expanded="True" />
           </Node>
           <Node name="toto" expanded="True">
             <Node name="References" expanded="True" />

@@ -120,6 +120,51 @@ namespace Gst.Base
 				return gstsharp_basesrc_is_seekable (Handle);
 			}
 		}
+
+		struct GstBaseSrc {
+			IntPtr    element;
+
+			/*< protected >*/
+			public IntPtr srcpad;
+
+			/* available to subclass implementations */
+			/* MT-protected (with LIVE_LOCK) */
+			IntPtr          live_lock;
+			IntPtr         live_cond;
+			public bool       is_live;
+			public bool      live_running;
+
+			/* MT-protected (with LOCK) */
+			public uint        blocksize;     /* size of buffers when operating push based */
+			public bool        can_activate_push;     /* some scheduling properties */
+			public bool       random_access;
+
+			public IntPtr     clock_id;      /* for syncing */
+
+			/* MT-protected (with STREAM_LOCK *and* OBJECT_LOCK) */
+			public IntPtr     segment;
+			/* MT-protected (with STREAM_LOCK) */
+			public bool       need_newsegment;
+
+			public int           num_buffers;
+			public int           num_buffers_left;
+
+			public bool       typefind;
+			public bool       running;
+			public IntPtr pending_seek;
+
+			IntPtr priv;
+
+			/*< private >*/
+			IntPtr       _gst_reserved;
+		}
+
+		public Pad SrcPad {
+			get {
+				GstBaseSrc src = (GstBaseSrc)Marshal.PtrToStructure (Handle, typeof(GstBaseSrc));
+				return new Pad (src.srcpad);
+			}
+		}
 	}
 }
 

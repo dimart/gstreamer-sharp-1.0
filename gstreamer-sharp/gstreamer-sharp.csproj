@@ -89,6 +89,11 @@
     <Compile Include="Event.cs" />
     <Compile Include="Base\PushSrc.cs" />
     <Compile Include="CorePlugins\FdSrc.cs" />
+    <Compile Include="CorePlugins\Tee.cs" />
+    <Compile Include="CorePlugins\Queue.cs" />
+    <Compile Include="Base\BaseSink.cs" />
+    <Compile Include="CorePlugins\FdSink.cs" />
+    <Compile Include="CorePlugins\FileSink.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

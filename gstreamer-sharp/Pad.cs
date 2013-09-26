@@ -13,15 +13,31 @@ namespace Gst
 		Always, Sometimes, Request
 	}
 
+	public enum PadMode
+	{
+		None, Push, Pull
+	}
+
 	public enum FlowReturn
 	{
-		Ok            = 0,
+		Ok            =  0,
 		NotLinked     = -1,
 		Flushing      = -2,
 		EOS           = -3,
 		NotNegociated = -4,
 		Error         = -5,
 		NotSupported  = -6
+	}
+
+	public enum PadLinkReturn
+	{
+		Ok             =  0,
+		WrongHierarchy = -1,
+		WasLinked      = -2,
+		WrongDirection = -3,
+		NoFormat       = -4,
+		NoSched        = -5,
+		Refused        = -6
 	}
 
 	public enum PadLinkCheck

@@ -76,10 +76,17 @@ FILES = \
 	Utils.cs \
 	Audio/StreamVolume.cs \
 	Base/Adapter.cs \
+	Base/BaseSink.cs \
 	Base/BaseSrc.cs \
+	Base/PushSrc.cs \
 	BasePlugins/PlayBin.cs \
 	BasePlugins/PlaySink.cs \
+	CorePlugins/FdSink.cs \
+	CorePlugins/FdSrc.cs \
+	CorePlugins/FileSink.cs \
 	CorePlugins/FileSrc.cs \
+	CorePlugins/Queue.cs \
+	CorePlugins/Tee.cs \
 	GstSharp/BusFunc.cs \
 	GstSharp/TaskFunc.cs \
 	Video/ColorBalance.cs \
