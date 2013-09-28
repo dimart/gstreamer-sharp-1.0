@@ -1,18 +1,8 @@
 #include <gst/gst.h>
 
-
-GType
-gstsharp_g_type_from_instance (GTypeInstance * instance);
-GstObject *gst_message_get_src(GstMessage *message);
-GstSample *
-gstsharp_element_convert_sample(GstElement *element, GstCaps *caps);
-GstSample *
-gstsharp_element_convert_sample2(GstElement *element, gchar *caps_str);
-guint
-gstsharp_gst_message_get_src_offset (void);
-GType *
-gstsharp_value_get_type(GValue *val);
-
+GstMessageType gst_message_get_message_type (GstMessage *message){
+	return message->type;
+}
 GstObject *gst_message_get_src(GstMessage *message){
 	return message->src;
 }

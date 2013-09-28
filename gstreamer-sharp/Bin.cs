@@ -50,6 +50,10 @@ namespace Gst
 		{
 			return gst_bin_add (Raw,e.Handle);
 		}
+		public void AddMany (params Element[] elements){
+			foreach(Element e in elements)
+				Add (e);
+		}
 
 		public bool Remove (Element e)
 		{

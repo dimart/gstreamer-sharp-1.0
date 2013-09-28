@@ -170,6 +170,14 @@ namespace Gst
 		public bool Link (Element element){
 			return gst_element_link (Handle, element.Handle);
 		}
+		public static bool Link (params Element [] elements) {
+		  for (int i = 0; i < elements.Length - 1; i++) {
+		    if (!elements[i].Link (elements[i+1]))
+		      return false;
+		  }
+
+		  return true;
+		}
 
 		public StateChangeReturn SetState(State state){
 			return (StateChangeReturn)gst_element_set_state (Raw,(int)state);

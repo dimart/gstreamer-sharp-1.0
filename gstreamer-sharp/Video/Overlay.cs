@@ -69,7 +69,8 @@ namespace Gst.Video
 
 		public UIntPtr WindowHandle {
 			set{
-gst_video_overlay_set_window_handle(Handle,value);
+				Console.WriteLine ("handle");
+				gst_video_overlay_set_window_handle(Handle,value);
 			}
 		}
 	}

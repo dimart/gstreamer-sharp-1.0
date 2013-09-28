@@ -13,7 +13,7 @@ namespace Gst
 		public const string BaseDll = "libgstbase-1.0-0.dll";
 
 		[DllImport(Dll)]
-		static extern void gst_init(ref int argc,[MarshalAs(UnmanagedType.SafeArray)]ref string[] argv);
+		static extern void gst_init(ref int argc,[MarshalAs(UnmanagedType.LPArray)]ref string[] argv);
 
 		[DllImport(Dll)]
 		static extern IntPtr gst_version_string();

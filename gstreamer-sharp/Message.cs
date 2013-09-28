@@ -47,9 +47,13 @@ namespace Gst
 		static extern IntPtr gst_message_new_custom (MessageType type, IntPtr src, IntPtr structure);
 		[DllImport(Application.Dll)]
 		static extern IntPtr gst_message_get_structure(IntPtr message);
+		[DllImport(Application.Dll)]
+		static extern void gst_message_parse_error (IntPtr message, out IntPtr error, out IntPtr debug);
 
 		[DllImport(Application.GlueDll)]
 		static extern uint gstsharp_gst_message_get_src_offset ();
+		[DllImport(Application.GlueDll)]
+		static extern MessageType gst_message_get_message_type (IntPtr message);
 
 		
 		public Message (IntPtr raw) : base(raw)
@@ -69,6 +73,12 @@ namespace Gst
 			}
 		}
 
+		public MessageType Type {
+			get {
+				return gst_message_get_message_type (Handle);
+			}
+		}
+
 		public Gst.Structure Structure {
 			get{
 				return new Gst.Structure(gst_message_get_structure (Handle));
@@ -77,6 +87,12 @@ namespace Gst
 
 		public static new GLib.GType GType{
 			get{return new GLib.GType(gst_message_get_type ());}
+		}
+
+		public void ParseError(out string debug){
+			IntPtr e; IntPtr d;
+			gst_message_parse_error (Handle, out e, out d);
+			debug = Marshal.PtrToStringAuto (d);
 		}
 	}
 }

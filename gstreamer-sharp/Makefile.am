@@ -71,14 +71,24 @@ FILES = \
 	Segment.cs \
 	State.cs \
 	Structure.cs \
+	TagList.cs \
 	TagSetter.cs \
 	Task.cs \
 	TaskPool.cs \
 	Utils.cs \
+	Audio/BaseSrc.cs \
+	Audio/ChannelPosition.cs \
+	Audio/Format.cs \
+	Audio/FormatInfo.cs \
+	Audio/Info.cs \
+	Audio/RingBuffer.cs \
+	Audio/RingBufferSpec.cs \
+	Audio/Src.cs \
 	Audio/StreamVolume.cs \
 	Base/Adapter.cs \
 	Base/BaseSink.cs \
 	Base/BaseSrc.cs \
+	Base/ByteReader.cs \
 	Base/PushSrc.cs \
 	BasePlugins/PlayBin.cs \
 	BasePlugins/PlaySink.cs \
@@ -89,61 +99,10 @@ FILES = \
 	CorePlugins/Queue.cs \
 	CorePlugins/Tee.cs \
 	GstSharp/BusFunc.cs \
+	GstSharp/PackFunc.cs \
 	GstSharp/TaskFunc.cs \
 	Video/ColorBalance.cs \
-	Video/Overlay.cs \
-	GLib/Argv.cs \
-	GLib/ConnectBeforeAttribute.cs \
-	GLib/DefaultSignalHandlerAttribute.cs \
-	GLib/DestroyNotify.cs \
-	GLib/ExceptionManager.cs \
-	GLib/FileUtils.cs \
-	GLib/GException.cs \
-	GLib/GInterfaceAdapter.cs \
-	GLib/GInterfaceAttribute.cs \
-	GLib/GLibSynchronizationContext.cs \
-	GLib/Global.cs \
-	GLib/GString.cs \
-	GLib/GType.cs \
-	GLib/GTypeAttribute.cs \
-	GLib/Idle.cs \
-	GLib/InitiallyUnowned.cs \
-	GLib/IOChannel.cs \
-	GLib/IWrapper.cs \
-	GLib/KeyFile.cs \
-	GLib/List.cs \
-	GLib/ListBase.cs \
-	GLib/Log.cs \
-	GLib/MainContext.cs \
-	GLib/MainLoop.cs \
-	GLib/ManagedValue.cs \
-	GLib/Markup.cs \
-	GLib/Marshaller.cs \
-	GLib/MissingIntPtrCtorException.cs \
-	GLib/NotifyHandler.cs \
-	GLib/Object.cs \
-	GLib/ObjectManager.cs \
-	GLib/Opaque.cs \
-	GLib/ParamSpec.cs \
-	GLib/Priority.cs \
-	GLib/PropertyAttribute.cs \
-	GLib/PtrArray.cs \
-	GLib/Signal.cs \
-	GLib/SignalArgs.cs \
-	GLib/SignalAttribute.cs \
-	GLib/SignalClosure.cs \
-	GLib/SList.cs \
-	GLib/Source.cs \
-	GLib/Spawn.cs \
-	GLib/Thread.cs \
-	GLib/Timeout.cs \
-	GLib/ToggleRef.cs \
-	GLib/TypeFundamentals.cs \
-	GLib/TypeInitializerAttribute.cs \
-	GLib/Value.cs \
-	GLib/ValueArray.cs \
-	GLib/Variant.cs \
-	GLib/VariantType.cs
+	Video/Overlay.cs 
 
 DATA_FILES = 
 
@@ -169,8 +128,8 @@ distclean-local:
 $(ASSEMBLY_MDB): $(ASSEMBLY) 
 
 make-glue:
-	gcc -Wall -fPIC -c glue/*.c `pkg-config --cflags --libs gstreamer-base-1.0` \
-	&& gcc -shared -Wl,-soname,libgstglue-1.0.so -o libgstglue-1.0.so *.o `pkg-config --cflags --libs gstreamer-base-1.0`
+	gcc -Wall -fPIC -c glue/*.c `pkg-config --cflags --libs gstreamer-base-1.0 gstreamer-audio-1.0` \
+	&& gcc -shared -Wl,-soname,libgstglue-1.0.so -o libgstglue-1.0.so *.o `pkg-config --cflags --libs gstreamer-audio-1.0 gstreamer-base-1.0`
 
 $(ASSEMBLY): $(FILES)
-	$(CSC) $(ASSEMBLY_COMPILER_FLAGS) -out:$(ASSEMBLY) -target:$(COMPILE_TARGET) -r:System.Core $(FILES)
+	$(CSC) $(ASSEMBLY_COMPILER_FLAGS) -out:$(ASSEMBLY) -target:$(COMPILE_TARGET) -r:System.Core -pkg:glib-sharp-3.0 $(FILES)
