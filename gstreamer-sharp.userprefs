@@ -1,36 +1,12 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="gstreamer-sharp/Message.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="gstreamer-sharp/Application.cs">
     <Files>
-      <File FileName="Test/Main.cs" Line="24" Column="35" />
-      <File FileName="gstreamer-sharp/TagSetter.cs" Line="39" Column="79" />
-      <File FileName="gstreamer-sharp/BasePlugins/PlaySink.cs" Line="12" Column="3" />
-      <File FileName="gstreamer-sharp/Manager.cs" Line="22" Column="62" />
-      <File FileName="gstreamer-sharp/Bin.cs" Line="55" Column="13" />
-      <File FileName="gstreamer-sharp/Message.cs" Line="78" Column="50" />
-      <File FileName="../../../usr/include/gstreamer-1.0/gst/gstmessage.h" Line="284" Column="2" />
+      <File FileName="gstreamer-sharp/Message.cs" Line="1" Column="1" />
+      <File FileName="gstreamer-sharp/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="gstreamer-sharp/Application.cs" Line="30" Column="34" />
+      <File FileName="../../../../usr/include/gstreamer-1.0/gst/gst.h" Line="91" Column="35" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="gstreamer-sharp" expanded="True">
-            <Node name="References" expanded="True" />
-            <Node name="BasePlugins" expanded="True" />
-            <Node name="Video" expanded="True" />
-            <Node name="Message.cs" selected="True" />
-          </Node>
-          <Node name="Test" expanded="True">
-            <Node name="References" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

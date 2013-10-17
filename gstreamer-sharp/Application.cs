@@ -14,6 +14,8 @@ namespace Gst
 
 		[DllImport(Dll)]
 		static extern void gst_init(ref int argc,[MarshalAs(UnmanagedType.LPArray)]ref string[] argv);
+		[DllImport(Dll)]
+		static extern bool gst_is_initialized ();
 
 		[DllImport(Dll)]
 		static extern IntPtr gst_version_string();
@@ -21,6 +23,12 @@ namespace Gst
 		public static void Init(ref int argc, ref string[] argv){
 			gst_init (ref argc, ref argv);
 			ObjectManager.Register ();
+		}
+
+		public static bool IsInitialized {
+			get {
+				return gst_is_initialized ();
+			}
 		}
 
 		public static string Version {
