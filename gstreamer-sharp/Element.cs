@@ -87,6 +87,10 @@ namespace Gst
 		static extern IntPtr gst_element_get_factory (IntPtr element);
 		[DllImport(Application.Dll)]
 		static extern bool gst_element_post_message (IntPtr element, IntPtr message);
+		[DllImport(Application.Dll)]
+		static extern bool gst_element_query_position (IntPtr element, Format fmt, out long pos);
+		[DllImport(Application.Dll)]
+		static extern bool gst_element_query_duration (IntPtr element, Format fmt, out long dur);
 
 		public Element (IntPtr raw) : base(raw)
 		{
@@ -214,6 +218,12 @@ namespace Gst
 		}
 		public bool Query(Gst.Query query){
 			return gst_element_query (Handle,query.Handle);
+		}
+		public bool QueryPosition (Format format, out long position){
+			return gst_element_query_position (Handle, format, out position);
+		}
+		public bool QueryDuration (Format format, out long duration){
+			return gst_element_query_duration (Handle,format,out duration);
 		}
 		public bool PostMessage(Message message){
 			return gst_element_post_message (Handle, message.Handle);

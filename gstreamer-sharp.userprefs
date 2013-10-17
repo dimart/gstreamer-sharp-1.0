@@ -1,11 +1,11 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="gstreamer-sharp/Application.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="gstreamer-sharp/Element.cs">
     <Files>
-      <File FileName="gstreamer-sharp/Message.cs" Line="1" Column="1" />
-      <File FileName="gstreamer-sharp/AssemblyInfo.cs" Line="1" Column="1" />
-      <File FileName="gstreamer-sharp/Application.cs" Line="30" Column="34" />
       <File FileName="../../../../usr/include/gstreamer-1.0/gst/gst.h" Line="91" Column="35" />
+      <File FileName="gstreamer-sharp/Element.cs" Line="226" Column="67" />
+      <File FileName="../../../../usr/include/gstreamer-1.0/gst/gstelement.h" Line="1" Column="1" />
+      <File FileName="../../../../usr/include/gstreamer-1.0/gst/gstutils.h" Line="909" Column="51" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
