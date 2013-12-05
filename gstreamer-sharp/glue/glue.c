@@ -49,3 +49,8 @@ gchar *
 gstsharp_value_get_type_name(GValue *val){
 	return G_VALUE_TYPE_NAME(val);
 }
+
+GstAllocationParams *
+gstsharp_allocation_params_new () {
+	return (GstAllocationParams*)g_malloc ((gsize) sizeof (GstAllocationParams*));
+}

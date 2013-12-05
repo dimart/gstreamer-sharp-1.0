@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Gst.CorePlugins
 {
-	public class FdSink : Gst.Base.BaseSink
+	public class FdSink : Gst.Base.Sink
 	{
 		[DllImport(Application.Dll)]
 		static extern IntPtr gst_element_factory_make (IntPtr element, IntPtr name);

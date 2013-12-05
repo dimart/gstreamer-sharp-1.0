@@ -1,3 +1,14 @@
+gstreamer-sharp (1.2.1+ppa1-1) trusty; urgency=low
+
+  
+
+gstreamer-sharp (1.0.8~ppa2) saucy; urgency=low
+
+  * [363239c] QueryPosition & QueryDuration added.
+    [f5963e7] add Application.IsInitialized.
+
+ -- Yannick Inizan <inizan.yannick@gmail.com>  Thu, 17 Oct 2013 13:30:00 +0100
+
 gstreamer-sharp (1.0.8~ppa1) saucy; urgency=low
 
   * [a38cc6c] Gst.Audio updated.

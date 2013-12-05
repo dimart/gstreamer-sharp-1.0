@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="glib-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <Private>False</Private>
+      <Package>glib-sharp-3.0</Package>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -74,7 +75,6 @@
     <Compile Include="Utils.cs" />
     <Compile Include="Format.cs" />
     <Compile Include="Base\Adapter.cs" />
-    <Compile Include="Base\BaseSrc.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="BufferList.cs" />
     <Compile Include="Segment.cs" />
@@ -90,7 +90,6 @@
     <Compile Include="CorePlugins\FdSrc.cs" />
     <Compile Include="CorePlugins\Tee.cs" />
     <Compile Include="CorePlugins\Queue.cs" />
-    <Compile Include="Base\BaseSink.cs" />
     <Compile Include="CorePlugins\FdSink.cs" />
     <Compile Include="CorePlugins\FileSink.cs" />
     <Compile Include="Base\ByteReader.cs" />
@@ -104,6 +103,8 @@
     <Compile Include="Audio\Format.cs" />
     <Compile Include="GstSharp\PackFunc.cs" />
     <Compile Include="TagList.cs" />
+    <Compile Include="Base\Src.cs" />
+    <Compile Include="Base\Sink.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

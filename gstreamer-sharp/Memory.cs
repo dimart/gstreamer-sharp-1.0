@@ -3,6 +3,18 @@ using System.Runtime.InteropServices;
 
 namespace Gst
 {
+	[Flags]
+	public enum MemoryFlags
+	{
+		ReadOnly = MiniObjectFlags.LockReadOnly,
+		NoShare = MiniObjectFlags.Last << 0,
+		ZeroPrefixed = MiniObjectFlags.Last << 1,
+		ZeroPadded = MiniObjectFlags.Last << 2,
+		PhysicallyContiguous = MiniObjectFlags.Last << 3,
+		NotMappable = MiniObjectFlags.Last << 4,
+		Last = MiniObjectFlags.Last << 16
+	}
+
 	public class Memory : MiniObject
 	{
 		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]

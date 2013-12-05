@@ -3,6 +3,53 @@ using System.Runtime.InteropServices;
 
 namespace Gst
 {
+	[StructLayout(LayoutKind.Sequential)]
+	internal struct GstAllocationParams
+	{
+		public MemoryFlags flags;
+		public uint align;
+		public uint prefix;
+		public uint padding;
+		IntPtr _gst_reserved;
+	}
+
+	public class AllocationParams
+	{
+		IntPtr prms;
+
+		[DllImport(Application.Dll)]
+		static extern void gst_allocation_params_init (IntPtr ap);
+		[DllImport(Application.Dll)]
+		static extern void gst_allocation_params_free (IntPtr ap);
+
+		~AllocationParams()
+		{
+			gst_allocation_params_free (prms);
+		}
+
+		internal AllocationParams (IntPtr raw)
+		{
+			prms = raw;
+		}
+
+		internal AllocationParams (GstAllocationParams prms)
+		{
+			this.prms = GLib.Marshaller.StructureToPtrAlloc (prms);
+		}
+
+		public void Init ()
+		{
+			gst_allocation_params_init (prms);
+		}
+	}
+
+	[Flags]
+	public enum AllocatorFlags
+	{
+		CustomAlloc = ObjectFlags.Last << 0,
+		Last = ObjectFlags.Last << 16
+	}
+
 	public class Allocator : Gst.Object
 	{
 		[DllImport(Application.Dll)]

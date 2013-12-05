@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Gst.Base
 {
-	public class BaseSink : Element
+	public class Sink : Element
 	{
 		[DllImport(Application.GlueDll)]
 		static extern IntPtr gstsharp_basesink_get_caps (IntPtr sink, IntPtr filter);
@@ -99,7 +99,7 @@ namespace Gst.Base
 		[DllImport(Application.BaseDll)]
 		static extern FlowReturn gst_base_sink_wait (IntPtr sink, ulong time, out long jitter);
 
-		protected BaseSink (IntPtr raw) : base(raw)
+		protected Sink (IntPtr raw) : base(raw)
 		{
 		}
 

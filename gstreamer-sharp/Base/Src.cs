@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Gst.Base
 {
-	public class BaseSrc : Element
+	public class Src : Element
 	{
 		[DllImport(Application.GlueDll)]
 		static extern IntPtr gstsharp_basesrc_get_caps (IntPtr src, IntPtr filter);
@@ -44,8 +44,39 @@ namespace Gst.Base
 		static extern void gst_base_src_set_live (IntPtr src, bool live);
 		[DllImport(Application.BaseDll)]
 		static extern bool gst_base_src_is_live (IntPtr src);
+		[DllImport(Application.BaseDll)]
+		static extern FlowReturn gst_base_src_wait_playing (IntPtr src);
+		[DllImport(Application.BaseDll)]
+		static extern void gst_base_src_set_format (IntPtr src, Format format);
+		[DllImport(Application.BaseDll)]
+		static extern void gst_base_src_set_dynamic_size (IntPtr src, bool size);
+		[DllImport(Application.BaseDll)]
+		static extern void gst_base_src_set_async (IntPtr src, bool is_async);
+		[DllImport(Application.BaseDll)]
+		static extern bool gst_base_src_is_async (IntPtr src);
+		[DllImport(Application.BaseDll)]
+		static extern void gst_base_src_start_complete (IntPtr src, FlowReturn ret);
+		[DllImport(Application.BaseDll)]
+		static extern FlowReturn gst_base_src_start_wait (IntPtr src);
+		[DllImport(Application.BaseDll)]
+		static extern void gst_base_src_set_blocksize (IntPtr src, uint size);
+		[DllImport(Application.BaseDll)]
+		static extern uint gst_base_src_get_blocksize (IntPtr src);
+		[DllImport(Application.BaseDll)]
+		static extern void gst_base_src_set_do_timestamp (IntPtr src, bool dot);
+		[DllImport(Application.BaseDll)]
+		static extern bool gst_base_src_get_do_timestamp (IntPtr src);
+		[DllImport(Application.BaseDll)]
+		static extern bool gst_base_src_query_latency (IntPtr src, out bool live, out ulong min_latency, out ulong max_latency);
+		[DllImport(Application.BaseDll)]
+		static extern bool gst_base_src_set_caps (IntPtr Src, IntPtr caps);
+		[DllImport(Application.BaseDll)]
+		static extern IntPtr gst_base_src_get_buffer_pool (IntPtr src);
+		[DllImport(Application.BaseDll)]
+		static extern void gst_base_src_get_allocator (IntPtr src, out IntPtr allocator, out GstAllocationParams prms);
 
-		protected BaseSrc (IntPtr raw) : base(raw)
+
+		protected Src (IntPtr raw) : base(raw)
 		{
 		}
 
@@ -54,6 +85,11 @@ namespace Gst.Base
 		}
 		protected Caps Fixate (Caps caps){
 			return new Caps (gstsharp_basesrc_fixate(Handle,caps.Handle));
+		}
+
+		protected FlowReturn WaitPlaying ()
+		{
+			return gst_base_src_wait_playing (Handle);
 		}
 
 		protected bool Negotiate(){
@@ -73,6 +109,15 @@ namespace Gst.Base
 		}
 		protected bool PrepareSegment(Event e, Segment segment){
 			return gstsharp_basesrc_prepare_seek_segment (Handle, e.Handle, segment.Handle);
+		}
+		protected bool QueryLatency (out bool live, out ulong min_latency, out ulong max_latency)
+		{
+			return gst_base_src_query_latency (Handle, out live, out min_latency, out max_latency);
+		}
+		protected bool QueryLatency (out ulong min_latency, out ulong max_latency)
+		{
+			bool live;
+			return QueryLatency (out live, out min_latency, out max_latency);
 		}
 		protected bool Unlock(){
 			return gstsharp_basesrc_unlock (Handle);
@@ -100,6 +145,65 @@ namespace Gst.Base
 		}
 		protected FlowReturn Fill(ulong offset, uint size, Buffer buffer){
 			return gstsharp_basesrc_fill (Handle, offset, size, buffer.Handle);
+		}
+		protected Allocator GetAllocator (out AllocationParams prms)
+		{
+			IntPtr allocator;
+			GstAllocationParams _prms;
+			gst_base_src_get_allocator (Handle, out allocator, out _prms);
+			prms = new AllocationParams (_prms);
+			return new Gst.Allocator (allocator);
+		}
+
+		protected bool Async {
+			get { 
+				return gst_base_src_is_async (Handle);
+			}
+			set { 
+				gst_base_src_set_async (Handle, value);
+			}
+		}
+
+		protected uint BlockSize {
+			get { 
+				return gst_base_src_get_blocksize (Handle);
+			}
+			set { 
+				gst_base_src_set_blocksize (Handle, value);
+			}
+		}
+
+		protected Gst.BufferPool BufferPool {
+			get {
+				return new Gst.BufferPool (gst_base_src_get_buffer_pool(Handle));
+			}
+		}
+
+		protected Gst.Caps Caps {
+			set { 
+				gst_base_src_set_caps (Handle, value.Handle);
+			}
+		}
+
+		protected bool DoTimestamp {
+			get { 
+				return gst_base_src_get_do_timestamp (Handle);
+			}
+			set { 
+				gst_base_src_set_do_timestamp (Handle, value);
+			}
+		}
+
+		protected bool DynamicSize {
+			set { 
+				gst_base_src_set_dynamic_size (Handle, value);
+			}
+		}
+
+		protected Gst.Format Format {
+			set {
+				gst_base_src_set_format (Handle, value);
+			}
 		}
 
 		protected bool Live {

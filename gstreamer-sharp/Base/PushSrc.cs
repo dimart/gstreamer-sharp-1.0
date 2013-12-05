@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Gst.Base
 {
-	public class PushSrc : BaseSrc
+	public class PushSrc : Src
 	{
 		[DllImport(Application.GlueDll)]
 		static extern FlowReturn gstsharp_pushsrc_create (IntPtr src, out IntPtr buffer);

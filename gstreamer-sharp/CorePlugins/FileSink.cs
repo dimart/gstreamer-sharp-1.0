@@ -11,7 +11,7 @@ namespace Gst.CorePlugins
 		Unbuffered = 2
 	}
 
-	public class FileSink : Gst.Base.BaseSink
+	public class FileSink : Gst.Base.Sink
 	{
 
 		[DllImport(Application.Dll)]

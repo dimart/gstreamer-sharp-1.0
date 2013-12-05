@@ -86,8 +86,8 @@ FILES = \
 	Audio/Src.cs \
 	Audio/StreamVolume.cs \
 	Base/Adapter.cs \
-	Base/BaseSink.cs \
-	Base/BaseSrc.cs \
+	Base/Sink.cs \
+	Base/Src.cs \
 	Base/ByteReader.cs \
 	Base/PushSrc.cs \
 	BasePlugins/PlayBin.cs \

@@ -85,6 +85,8 @@ namespace Gst
 		static extern uint gst_event_get_seqnum (IntPtr e);
 		[DllImport(Application.Dll)]
 		static extern void gst_event_set_seqnum (IntPtr e, uint num);
+		[DllImport(Application.Dll)]
+		static extern void gst_event_parse_gap (IntPtr e, out ulong timestamp, out ulong duration);
 
 		public Event (IntPtr raw) : base(raw)
 		{
@@ -96,6 +98,11 @@ namespace Gst
 
 		public bool HasName(string name){
 			return gst_event_has_name (Handle, Marshal.StringToHGlobalAuto (name));
+		}
+
+		public void ParseGap (out ulong timestamp, out ulong duration)
+		{
+			gst_event_parse_gap (Handle, out timestamp, out duration);
 		}
 
 		public Gst.Structure Structure {
