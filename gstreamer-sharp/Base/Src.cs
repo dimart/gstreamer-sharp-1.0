@@ -137,7 +137,7 @@ namespace Gst.Base
 			buffer = new Buffer (b);
 			return fr;
 		}
-		protected FlowReturn Alloc (ulong offset, uint size, out Buffer buffer){
+		protected FlowReturn Alloc(ulong offset, uint size, out Buffer buffer){
 			IntPtr b;
 			var fr = gstsharp_basesrc_alloc (Handle, offset, size, out b);
 			buffer = new Buffer (b);
