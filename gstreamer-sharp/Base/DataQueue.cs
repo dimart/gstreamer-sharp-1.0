@@ -30,7 +30,7 @@ namespace Gst.Base
 
 		public DataQueueItem (IntPtr raw)
 		{
-			item = Marshal.PtrToStructure (raw, typeof(GstDataQueueItem));
+			item = (GstDataQueueItem)Marshal.PtrToStructure (raw, typeof(GstDataQueueItem));
 		}
 
 		public IntPtr Raw {

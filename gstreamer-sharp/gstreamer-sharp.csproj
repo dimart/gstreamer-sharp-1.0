@@ -110,6 +110,8 @@
     <Compile Include="Base\ByteWriter.cs" />
     <Compile Include="App\Sink.cs" />
     <Compile Include="App\Src.cs" />
+    <Compile Include="UriDownloader\Fragment.cs" />
+    <Compile Include="UriDownloader\UriDownloader.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -120,5 +122,6 @@
     <Folder Include="Base\" />
     <Folder Include="CorePlugins\" />
     <Folder Include="App\" />
+    <Folder Include="UriDownloader\" />
   </ItemGroup>
 </Project>

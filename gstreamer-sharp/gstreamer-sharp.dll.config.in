@@ -4,6 +4,7 @@
   <dllmap dll="libgstaudio-1.0-0.dll" target="libgstaudio-1.0.so" />
   <dllmap dll="libgstbase-1.0-0.dll" target="libgstbase-1.0.so" />  
   <dllmap dll="libgstapp-1.0-0.dll" target="libgstapp-1.0.so" />
+  <dllmap dll="libgsturidownloader-1.0-0.dll" target="libgsturidownloader-1.0.so" />
   <dllmap dll="libglib-2.0-0.dll" target="libglib-2.0.so.0" />
   <dllmap dll="libgobject-2.0-0.dll" target="libgobject-2.0.so.0" />
   <dllmap dll="libgthread-2.0-0.dll" target="libgthread-2.0.so.0" />

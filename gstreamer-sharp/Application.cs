@@ -12,6 +12,7 @@ namespace Gst
 		public const string AudioDll = "libgstaudio-1.0-0.dll";
 		public const string BaseDll = "libgstbase-1.0-0.dll";
 		public const string AppDll = "libgstapp-1.0-0.dll";
+		public const string UriDownloaderDll = "libgsturidownloader-1.0-0.dll";
 
 		[DllImport(Dll)]
 		static extern void gst_init(ref int argc,[MarshalAs(UnmanagedType.LPArray)]ref string[] argv);

@@ -1,10 +1,8 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="gstreamer-sharp/Base/ByteReader.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="gstreamer-sharp/Base/DataQueue.cs">
     <Files>
-      <File FileName="gstreamer-sharp/Base/DataQueue.cs" Line="165" Column="43" />
-      <File FileName="gstreamer-sharp/AssemblyInfo.cs" Line="20" Column="34" />
-      <File FileName="gstreamer-sharp/Base/ByteReader.cs" Line="1" Column="1" />
+      <File FileName="gstreamer-sharp/Base/DataQueue.cs" Line="33" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
