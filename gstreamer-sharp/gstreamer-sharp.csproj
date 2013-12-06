@@ -107,6 +107,9 @@
     <Compile Include="Base\Sink.cs" />
     <Compile Include="Base\DataQueue.cs" />
     <Compile Include="GstSharp\DataQueueFuncs.cs" />
+    <Compile Include="Base\ByteWriter.cs" />
+    <Compile Include="App\Sink.cs" />
+    <Compile Include="App\Src.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -116,5 +119,6 @@
     <Folder Include="Audio\" />
     <Folder Include="Base\" />
     <Folder Include="CorePlugins\" />
+    <Folder Include="App\" />
   </ItemGroup>
 </Project>

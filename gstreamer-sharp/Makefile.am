@@ -76,6 +76,8 @@ FILES = \
 	Task.cs \
 	TaskPool.cs \
 	Utils.cs \
+	App/Src.cs \
+	App/Sink.cs \
 	Audio/BaseSrc.cs \
 	Audio/ChannelPosition.cs \
 	Audio/Format.cs \
@@ -130,8 +132,8 @@ distclean-local:
 $(ASSEMBLY_MDB): $(ASSEMBLY) 
 
 make-glue:
-	gcc -Wall -fPIC -c glue/*.c `pkg-config --cflags --libs gstreamer-base-1.0 gstreamer-audio-1.0` \
-	&& gcc -shared -Wl,-soname,libgstglue-1.0.so -o libgstglue-1.0.so *.o `pkg-config --cflags --libs gstreamer-audio-1.0 gstreamer-base-1.0`
+	gcc -Wall -fPIC -c glue/*.c `pkg-config --cflags --libs gstreamer-app-1.0 gstreamer-audio-1.0` \
+	&& gcc -shared -Wl,-soname,libgstglue-1.0.so -o libgstglue-1.0.so *.o `pkg-config --cflags --libs gstreamer-audio-1.0 gstreamer-app-1.0`
 
 $(ASSEMBLY): $(FILES)
 	$(CSC) $(ASSEMBLY_COMPILER_FLAGS) -out:$(ASSEMBLY) -target:$(COMPILE_TARGET) -r:System.Core -pkg:glib-sharp-3.0 $(FILES)
