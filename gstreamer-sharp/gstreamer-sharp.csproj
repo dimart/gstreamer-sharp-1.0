@@ -105,6 +105,8 @@
     <Compile Include="TagList.cs" />
     <Compile Include="Base\Src.cs" />
     <Compile Include="Base\Sink.cs" />
+    <Compile Include="Base\DataQueue.cs" />
+    <Compile Include="GstSharp\DataQueueFuncs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

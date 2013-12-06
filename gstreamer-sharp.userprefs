@@ -1,9 +1,12 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="gstreamer-sharp/Base/Src.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Test/Program.cs">
     <Files>
-      <File FileName="gstreamer-sharp/Base/Src.cs" Line="147" Column="15" />
-      <File FileName="gstreamer-sharp/Allocator.cs" Line="27" Column="38" />
+      <File FileName="gstreamer-sharp/Base/DataQueue.cs" Line="29" Column="86" />
+      <File FileName="gstreamer-sharp/Bus.cs" Line="1" Column="1" />
+      <File FileName="gstreamer-sharp/GstSharp/BusFunc.cs" Line="8" Column="22" />
+      <File FileName="gstreamer-sharp/GstSharp/DataQueueFuncs.cs" Line="50" Column="17" />
+      <File FileName="Test/Program.cs" Line="10" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -1,7 +1,9 @@
-gstreamer-sharp (1.2.1+ppa1-1) trusty; urgency=low
+gstreamer-sharp (1.3.0+ppa1-1) trusty; urgency=low
 
+  * 1.3 branch bindings.
   
-
+ -- Yannick Inizan <inizan.yannick@gmail.com>  Fri, 06 Dec 2013 01:50:00 +0100
+  
 gstreamer-sharp (1.0.8~ppa2) saucy; urgency=low
 
   * [363239c] QueryPosition & QueryDuration added.

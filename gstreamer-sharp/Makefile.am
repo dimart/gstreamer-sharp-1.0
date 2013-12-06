@@ -86,6 +86,7 @@ FILES = \
 	Audio/Src.cs \
 	Audio/StreamVolume.cs \
 	Base/Adapter.cs \
+	Base/DataQueue.cs \
 	Base/Sink.cs \
 	Base/Src.cs \
 	Base/ByteReader.cs \
@@ -100,6 +101,7 @@ FILES = \
 	CorePlugins/Tee.cs \
 	GstSharp/BusFunc.cs \
 	GstSharp/PackFunc.cs \
+	GstSharp/DataQueueFuncs.cs \
 	GstSharp/TaskFunc.cs \
 	Video/ColorBalance.cs \
 	Video/Overlay.cs 
